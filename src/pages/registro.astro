@@ -1,0 +1,357 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Registro de Usuarios | Casanostra Marketing Agency">
+  <div class="auth-page-wrapper">
+    <div class="auth-orb orb-gold"></div>
+    <div class="auth-orb orb-cyan"></div>
+
+    <div class="auth-card glass-panel-gold">
+      <div class="auth-header">
+        <a href="/" class="auth-brand">
+          <div class="brand-logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 17L12 22L22 17" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 12L12 17L22 12" stroke="#00F2FE" stroke-width="2"/>
+            </svg>
+          </div>
+          <span class="brand-name">CASANOSTRA</span>
+        </a>
+        <h2>Crear Nueva Cuenta</h2>
+        <p>Selecciona tu tipo de perfil para acceder a la plataforma.</p>
+      </div>
+
+      <!-- Role Selector Tabs -->
+      <div class="role-tabs">
+        <button class="role-tab active" id="tabClient" data-role="client">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Soy Cliente (Marca Personal)
+        </button>
+        <button class="role-tab" id="tabWorker" data-role="worker">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+          Soy Worker (Equipo)
+        </button>
+      </div>
+
+      <form id="registerForm" class="auth-form">
+        <input type="hidden" id="roleInput" value="client" />
+
+        <div class="form-group">
+          <label for="displayName">Nombre y Apellido *</label>
+          <input type="text" id="displayName" required placeholder="Ej: Sofía Valenzuela" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail">Correo Electrónico *</label>
+          <input type="email" id="regEmail" required placeholder="tu@empresa.com" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="regPassword">Contraseña *</label>
+          <input type="password" id="regPassword" required placeholder="Mínimo 6 caracteres" class="form-input" minlength="6" />
+        </div>
+
+        <!-- Client specific fields -->
+        <div id="clientFields" class="role-specific-fields">
+          <div class="form-group">
+            <label for="companyName">Nombre de Marca Personal / Empresa</label>
+            <input type="text" id="companyName" placeholder="Ej: Valenzuela Consulting" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label for="niche">Nicho o Industria</label>
+            <input type="text" id="niche" placeholder="Ej: Finanzas, Salud, E-commerce, Tech" class="form-input" />
+          </div>
+        </div>
+
+        <!-- Worker specific fields -->
+        <div id="workerFields" class="role-specific-fields" style="display: none;">
+          <div class="form-group">
+            <label for="workerRoleName">Especialidad / Cargo en Casanostra</label>
+            <input type="text" id="workerRoleName" placeholder="Ej: Growth Manager, Video Editor, Media Buyer" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label for="inviteCode">Código de Invitación de Equipo *</label>
+            <input type="text" id="inviteCode" placeholder="CODIGO" class="form-input" />
+          </div>
+        </div>
+
+        <div id="registerError" class="auth-error" style="display: none;"></div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;" id="regSubmitBtn">
+          <span id="regBtnText">Registrarme y Acceder</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        ¿Ya tienes cuenta? <a href="/login" class="auth-link">Inicia Sesión aquí</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .auth-page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+  }
+
+  .auth-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    pointer-events: none;
+  }
+
+  .orb-gold {
+    top: 15%;
+    left: 15%;
+    width: 400px;
+    height: 400px;
+    background: rgba(226, 184, 89, 0.12);
+  }
+
+  .orb-cyan {
+    bottom: 15%;
+    right: 15%;
+    width: 400px;
+    height: 400px;
+    background: rgba(0, 242, 254, 0.12);
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 40px 32px;
+    border-radius: 28px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .auth-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .auth-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .brand-logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(226, 184, 89, 0.15);
+    border: 1px solid rgba(226, 184, 89, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+  }
+
+  .auth-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .auth-header p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .role-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .role-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .role-tab:hover {
+    color: #ffffff;
+  }
+
+  .role-tab.active {
+    background: rgba(226, 184, 89, 0.15);
+    border: 1px solid rgba(226, 184, 89, 0.3);
+    color: var(--accent-gold);
+    box-shadow: 0 0 15px rgba(226, 184, 89, 0.15);
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .role-specific-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-input:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px rgba(226, 184, 89, 0.2);
+  }
+
+  .auth-error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+  }
+
+  .auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  .auth-link {
+    color: var(--accent-gold);
+    font-weight: 700;
+  }
+</style>
+
+<script>
+  import { registerUserAccount } from '../lib/firebase';
+
+  const tabClient = document.getElementById('tabClient');
+  const tabWorker = document.getElementById('tabWorker');
+  const roleInput = document.getElementById('roleInput') as HTMLInputElement;
+
+  const clientFields = document.getElementById('clientFields');
+  const workerFields = document.getElementById('workerFields');
+
+  tabClient?.addEventListener('click', () => {
+    tabClient.classList.add('active');
+    tabWorker?.classList.remove('active');
+    roleInput.value = 'client';
+    if (clientFields) clientFields.style.display = 'flex';
+    if (workerFields) workerFields.style.display = 'none';
+  });
+
+  tabWorker?.addEventListener('click', () => {
+    tabWorker.classList.add('active');
+    tabClient?.classList.remove('active');
+    roleInput.value = 'worker';
+    if (workerFields) workerFields.style.display = 'flex';
+    if (clientFields) clientFields.style.display = 'none';
+  });
+
+  const registerForm = document.getElementById('registerForm') as HTMLFormElement;
+  const registerError = document.getElementById('registerError');
+  const regSubmitBtn = document.getElementById('regSubmitBtn') as HTMLButtonElement;
+  const regBtnText = document.getElementById('regBtnText');
+
+  registerForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (registerError) registerError.style.display = 'none';
+
+    const role = roleInput.value as 'worker' | 'client';
+    const displayName = (document.getElementById('displayName') as HTMLInputElement).value;
+    const email = (document.getElementById('regEmail') as HTMLInputElement).value;
+    const password = (document.getElementById('regPassword') as HTMLInputElement).value;
+
+    const companyName = (document.getElementById('companyName') as HTMLInputElement)?.value;
+    const niche = (document.getElementById('niche') as HTMLInputElement)?.value;
+    const workerRoleName = (document.getElementById('workerRoleName') as HTMLInputElement)?.value;
+    const inviteCode = (document.getElementById('inviteCode') as HTMLInputElement)?.value.trim();
+
+    // Strict validation for Worker accounts
+    if (role === 'worker') {
+      if (!inviteCode || inviteCode.toUpperCase() !== 'CASANOSTRA-TEAM') {
+        if (registerError) {
+          registerError.textContent = 'Código de invitación de equipo no válido. Para registrarte como Worker necesitas ingresar el código: CASANOSTRA-TEAM';
+          registerError.style.display = 'block';
+        }
+        return;
+      }
+    }
+
+    if (regSubmitBtn) regSubmitBtn.disabled = true;
+    if (regBtnText) regBtnText.textContent = 'Registrando cuenta...';
+
+    try {
+      await registerUserAccount(email, password, displayName, role, {
+        companyName: role === 'worker' ? (workerRoleName || 'Casanostra Core Team') : (companyName || 'Marca Personal'),
+        niche: niche || 'Marketing & Growth',
+        inviteCode
+      });
+      window.location.href = '/dashboard';
+    } catch (err: any) {
+      if (registerError) {
+        registerError.textContent = err.message || 'Error al completar el registro';
+        registerError.style.display = 'block';
+      }
+      if (regSubmitBtn) regSubmitBtn.disabled = false;
+      if (regBtnText) regBtnText.textContent = 'Registrarme y Acceder';
+    }
+  });
+</script>

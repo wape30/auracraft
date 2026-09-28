@@ -1,0 +1,161 @@
+---
+---
+
+<section class="section-container">
+  <div class="section-header">
+    <div class="badge badge-gold">Testimonios de Clientes</div>
+    <h2>Lo que Dicen Quienes <span class="text-gradient-gold">Evolucionaron su Marca</span></h2>
+    <p>Empresarios y creadores que multiplicaron sus ventas y construyeron marcas personales dominantes.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <!-- Testimonial 1 -->
+    <div class="testimonial-card glass-panel">
+      <div class="stars">★★★★★</div>
+      <p class="test-text">"En 6 meses con Casanostra pasamos de subir videos aleatorios sin estrategia a facturar más de $50k/mes solo con clientes que llegan por mi marca personal. La calidad de producción es de otro mundo."</p>
+      
+      <div class="test-author">
+        <div class="author-avatar gold">MAR</div>
+        <div>
+          <div class="author-name">Mateo A. Ramírez</div>
+          <div class="author-role">Fundador, Nexus Capital</div>
+          <div class="author-verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#10B981"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>+140k Seguidores Reales</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="testimonial-card glass-panel">
+      <div class="stars">★★★★★</div>
+      <p class="test-text">"Lo que más destaco de Casanostra es que no te traen seguidores fantasma. Cada persona que me sigue ahora interactúa con mis publicaciones y pregunta por mis servicios de consultoría."</p>
+      
+      <div class="test-author">
+        <div class="author-avatar cyan">VAL</div>
+        <div>
+          <div class="author-name">Valentina S.</div>
+          <div class="author-role">Coach de Negocios & Autora</div>
+          <div class="author-verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#10B981"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>+85k Seguidores Reales</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="testimonial-card glass-panel">
+      <div class="stars">★★★★★</div>
+      <p class="test-text">"Tenía miedo de perder el control de mi mensaje al contratar una agencia. Casanostra entendió mi tono a la perfección y escalaron mi alcance a más de 2M de impresiones al mes."</p>
+      
+      <div class="test-author">
+        <div class="author-avatar purple">GAB</div>
+        <div>
+          <div class="author-name">Gabriel Thorne</div>
+          <div class="author-role">CEO, Real Estate Elite</div>
+          <div class="author-verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#10B981"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>+$2.1M en Ventas Inmobiliarias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .testimonial-card {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(226, 184, 89, 0.3);
+  }
+
+  .stars {
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .test-text {
+    font-size: 0.98rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .test-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  .author-avatar.gold {
+    background: rgba(226, 184, 89, 0.2);
+    color: var(--accent-gold);
+    border: 1px solid rgba(226, 184, 89, 0.4);
+  }
+
+  .author-avatar.cyan {
+    background: rgba(0, 242, 254, 0.2);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+  }
+
+  .author-avatar.purple {
+    background: rgba(157, 78, 221, 0.2);
+    color: var(--accent-purple);
+    border: 1px solid rgba(157, 78, 221, 0.4);
+  }
+
+  .author-name {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .author-role {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .author-verified {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: #10B981;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+</style>

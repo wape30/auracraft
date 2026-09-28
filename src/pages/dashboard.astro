@@ -1,0 +1,2240 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dashboard Principal | Casanostra Marketing Agency">
+  <div class="dashboard-page">
+    <!-- Top Header -->
+    <header class="dash-header glass-panel">
+      <div class="dash-header-container">
+        <div class="dash-brand">
+          <a href="/" class="brand-logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 17L12 22L22 17" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 12L12 17L22 12" stroke="#00F2FE" stroke-width="2"/>
+            </svg>
+          </a>
+          <div>
+            <div class="dash-title">CASANOSTRA DASHBOARD</div>
+            <div class="dash-sub" id="dashSubText">Plataforma de Seguimiento & Crecimiento</div>
+          </div>
+        </div>
+
+        <div class="dash-user-panel">
+          <!-- Unified Navigation & User Options Collapse Trigger -->
+          <button class="nav-collapse-trigger" id="navCollapseTrigger" aria-label="Abrir Menú de Opciones">
+            <div class="avatar-circle-sm" id="headerAvatarCircle">
+              <img id="headerAvatarImg" src="" alt="Avatar" style="display:none;" />
+              <span id="headerAvatarInitials">U</span>
+            </div>
+
+            <div class="trigger-user-info hide-mobile">
+              <div class="trigger-user-name" id="userNameText">Usuario</div>
+              <div class="trigger-role-badge" id="roleText">Cargando...</div>
+            </div>
+
+            <svg class="chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"></path>
+            </svg>
+          </button>
+
+          <!-- Collapsible Options & Navigation Dropdown Menu -->
+          <div class="nav-collapse-menu glass-panel" id="navCollapseMenu">
+            <div class="menu-user-header">
+              <div class="menu-avatar-circle" id="menuAvatarCircle">
+                <img id="menuAvatarImg" src="" alt="Avatar" style="display:none;" />
+                <span id="menuAvatarInitials">U</span>
+              </div>
+              <div class="menu-user-details">
+                <div class="menu-user-name" id="dropdownUserName">Usuario</div>
+                <div class="menu-user-email" id="userEmailText">email@ejemplo.com</div>
+                <div class="menu-user-badge">
+                  <span id="dropdownRoleText">Cargando...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-divider"></div>
+
+            <div class="menu-nav-links">
+              <button class="menu-item-btn" id="menuBtnProfile">
+                <span class="menu-icon">👤</span>
+                <div class="menu-item-text">
+                  <span class="title">Mi Perfil</span>
+                  <span class="sub">Configura tu foto, bio, país y redes</span>
+                </div>
+              </button>
+
+              <button class="menu-item-btn" id="menuBtnRequests">
+                <span class="menu-icon">📋</span>
+                <div class="menu-item-text">
+                  <span class="title">Solicitudes / Requests</span>
+                  <span class="sub">Ver y gestionar trabajos</span>
+                </div>
+              </button>
+
+              <button class="menu-item-btn" id="menuBtnGoals">
+                <span class="menu-icon">🎯</span>
+                <div class="menu-item-text">
+                  <span class="title">Metas de Crecimiento</span>
+                  <span class="sub">Objetivos de marca y métricas</span>
+                </div>
+              </button>
+
+              <a href="/opciones" class="menu-item-btn">
+                <span class="menu-icon">⚙️</span>
+                <div class="menu-item-text">
+                  <span class="title">Opciones y Tema</span>
+                  <span class="sub">Cambiar paleta entre Modo Claro y Oscuro</span>
+                </div>
+              </a>
+
+              <a href="/busqueda" class="menu-item-btn">
+                <span class="menu-icon">🔍</span>
+                <div class="menu-item-text">
+                  <span class="title">Directorio Búsqueda</span>
+                  <span class="sub">Explorar perfiles de usuarios y workers</span>
+                </div>
+              </a>
+
+              <a href="/" class="menu-item-btn">
+                <span class="menu-icon">🌐</span>
+                <div class="menu-item-text">
+                  <span class="title">Ir al Sitio Web</span>
+                  <span class="sub">Página principal de Casanostra</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="menu-divider"></div>
+
+            <div class="menu-footer">
+              <button class="menu-logout-btn" id="logoutBtn" title="Cerrar Sesión">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <span>Cerrar Sesión</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="dash-main-container">
+      <!-- WORKER VIEW CONTAINER -->
+      <div id="workerDashboard" class="role-dashboard-view" style="display: none;">
+        <!-- Worker Stats Summary -->
+        <div class="dash-stats-grid">
+          <div class="dash-stat-card glass-panel">
+            <div class="stat-top">
+              <span class="stat-lbl">Clientes Asignados</span>
+              <span class="stat-icon gold">👥</span>
+            </div>
+            <div class="stat-val text-gradient-gold" id="wStatClients">3 Clientes</div>
+            <div class="stat-desc">Marcas personales en seguimiento</div>
+          </div>
+
+          <div class="dash-stat-card glass-panel">
+            <div class="stat-top">
+              <span class="stat-lbl">Solicitudes Pendientes</span>
+              <span class="stat-icon cyan">📋</span>
+            </div>
+            <div class="stat-val text-gradient-cyan" id="wStatPendingReqs">2 Solicitudes</div>
+            <div class="stat-desc">Requieren atención o revisión</div>
+          </div>
+
+          <div class="dash-stat-card glass-panel">
+            <div class="stat-top">
+              <span class="stat-lbl">Metas en Progreso</span>
+              <span class="stat-icon purple">🎯</span>
+            </div>
+            <div class="stat-val text-gradient-purple" id="wStatActiveGoals">3 Metas</div>
+            <div class="stat-desc">Objetivos de crecimiento activos</div>
+          </div>
+        </div>
+
+        <!-- Worker Section Header & Tabs -->
+        <div class="dash-content-panel glass-panel">
+          <div class="panel-header">
+            <div class="panel-tabs">
+              <button class="panel-tab active" id="wTabReqs">
+                <span>Gestión de Requests de Clientes</span>
+                <span class="tab-count" id="wReqCount">0</span>
+              </button>
+              <button class="panel-tab" id="wTabGoals">
+                <span>Seguimiento de Metas</span>
+                <span class="tab-count" id="wGoalCount">0</span>
+              </button>
+              <button class="panel-tab" id="wTabProfile">
+                <span>👤 Mi Perfil</span>
+              </button>
+            </div>
+
+            <button class="btn-primary btn-sm" id="wOpenGoalModalBtn">
+              + Asignar Nueva Meta a Cliente
+            </button>
+          </div>
+
+          <!-- Worker Tab 1: Requests Management -->
+          <div class="tab-content active" id="wReqsTabContent">
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Solicitud</th>
+                    <th>Tipo</th>
+                    <th>Prioridad</th>
+                    <th>Fecha</th>
+                    <th>Estado de Seguimiento (Worker)</th>
+                  </tr>
+                </thead>
+                <tbody id="workerReqsTableBody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Worker Tab 2: Goals Tracking -->
+          <div class="tab-content" id="wGoalsTabContent">
+            <div class="goals-grid" id="workerGoalsGrid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Worker Tab 3: Profile Page -->
+          <div class="tab-content" id="wProfileTabContent">
+            <div class="profile-layout-grid">
+              <!-- Left Column: Profile Card Preview -->
+              <div class="profile-preview-card glass-panel-gold">
+                <div class="profile-avatar-wrapper">
+                  <div class="profile-avatar-large cardAvatarCircle">
+                    <img class="cardAvatarImg" src="" alt="Foto de Perfil" style="display:none;" />
+                    <span class="cardAvatarInitials">W</span>
+                  </div>
+                  <div class="online-indicator" title="En línea"></div>
+                </div>
+
+                <h3 class="profile-card-name cardDisplayName">Worker Name</h3>
+                <div class="profile-card-role cardRoleText">⚡ WORKER / GROWTH MANAGER</div>
+                <div class="profile-card-company cardCompanyText">Casanostra Staff</div>
+
+                <div class="profile-card-divider"></div>
+
+                <p class="profile-card-bio cardBioText">
+                  Sin descripción agregada aún. Edita tu perfil para añadir tu resumen profesional o especialidad.
+                </p>
+
+                <div class="profile-card-details">
+                  <div class="profile-detail-item">
+                    <span class="detail-icon">📍</span>
+                    <span class="cardLocationText">Ubicación no especificada</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="detail-icon">📞</span>
+                    <span class="cardPhoneText">Teléfono no especificado</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="detail-icon">✉️</span>
+                    <span class="cardEmailText">email@ejemplo.com</span>
+                  </div>
+                </div>
+
+                <div class="profile-social-section">
+                  <div class="social-section-title">Redes Sociales & Contacto</div>
+                  <div class="social-links-grid cardSocialsGrid">
+                    <!-- Rendered dynamically -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Profile Edit Form -->
+              <div class="profile-edit-card glass-panel">
+                <div class="edit-card-header">
+                  <h3>✏️ Configuración de Perfil (Worker)</h3>
+                  <p>Mantén tu información actualizada para tus clientes y el equipo de la agencia.</p>
+                </div>
+
+                <form class="profileEditForm profile-form">
+                  <div class="form-section-title">📷 Foto de Perfil</div>
+                  <div class="form-row align-center">
+                    <div class="form-group" style="flex: 2;">
+                      <label>URL de Foto de Perfil</label>
+                      <input type="url" class="inputPhotoUrl form-input" placeholder="https://ejemplo.com/foto.jpg" />
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                      <label>Subir Imagen</label>
+                      <label class="btn-file-upload">
+                        <span>📁 Elegir</span>
+                        <input type="file" class="inputPhotoFile" accept="image/*" style="display:none;" />
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="avatar-presets-picker">
+                    <span class="preset-label">Avatares sugeridos:</span>
+                    <button type="button" class="preset-avatar-btn" data-url="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80">Avatar 1</button>
+                    <button type="button" class="preset-avatar-btn" data-url="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80">Avatar 2</button>
+                    <button type="button" class="preset-avatar-btn" data-url="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80">Avatar 3</button>
+                    <button type="button" class="preset-avatar-btn" data-url="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80">Avatar 4</button>
+                  </div>
+
+                  <div class="form-section-title" style="margin-top: 20px;">👤 Datos Principales</div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Nombre Completo / Marca *</label>
+                      <input type="text" class="inputDisplayName form-input" required placeholder="Tu nombre público" />
+                    </div>
+                    <div class="form-group">
+                      <label>Teléfono de Contacto</label>
+                      <input type="tel" class="inputPhone form-input" placeholder="+34 600 000 000" />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>País</label>
+                      <input type="text" class="inputCountry form-input" placeholder="Ej: España, México, Colombia" />
+                    </div>
+                    <div class="form-group">
+                      <label>Ciudad</label>
+                      <input type="text" class="inputCity form-input" placeholder="Ej: Madrid, CDMX, Medellín" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripción General / Especialidad</label>
+                    <textarea class="inputDescription form-textarea" rows="3" placeholder="Resumen de tu rol, especialización en Paid Ads, Vídeo Viral, Embudos de Venta o Creatividad..."></textarea>
+                  </div>
+
+                  <div class="form-section-title" style="margin-top: 20px;">🌐 Redes Sociales</div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Instagram</label>
+                      <input type="text" class="inputInstagram form-input" placeholder="@usuario o https://instagram.com/..." />
+                    </div>
+                    <div class="form-group">
+                      <label>LinkedIn</label>
+                      <input type="text" class="inputLinkedin form-input" placeholder="https://linkedin.com/in/usuario" />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Twitter / X</label>
+                      <input type="text" class="inputTwitter form-input" placeholder="@usuario o https://x.com/..." />
+                    </div>
+                    <div class="form-group">
+                      <label>YouTube / TikTok</label>
+                      <input type="text" class="inputYoutube form-input" placeholder="https://youtube.com/@canal" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Sitio Web / Portfolio</label>
+                    <input type="url" class="inputWebsite form-input" placeholder="https://tuweb.com" />
+                  </div>
+
+                  <div class="profile-form-footer">
+                    <span class="profileStatusMsg status-toast" style="display:none;"></span>
+                    <button type="submit" class="saveProfileBtn btn-primary">
+                      💾 Guardar Cambios de Perfil
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLIENT VIEW CONTAINER -->
+      <div id="clientDashboard" class="role-dashboard-view" style="display: none;">
+        <!-- Client Stats Summary -->
+        <div class="dash-stats-grid">
+          <div class="dash-stat-card glass-panel">
+            <div class="stat-top">
+              <span class="stat-lbl">Mis Solicitudes Activas</span>
+              <span class="stat-icon gold">📁</span>
+            </div>
+            <div class="stat-val text-gradient-gold" id="cStatReqs">0 Solicitudes</div>
+            <div class="stat-desc">Vídeos, Ads y Embudos en producción</div>
+          </div>
+
+          <div class="dash-stat-card glass-panel">
+            <div class="stat-top">
+              <span class="stat-lbl">Metas de Crecimiento</span>
+              <span class="stat-icon cyan">🚀</span>
+            </div>
+            <div class="stat-val text-gradient-cyan" id="cStatGoals">0 Metas</div>
+            <div class="stat-desc">Objetivos de audiencia y ventas</div>
+          </div>
+
+          <div class="dash-stat-card glass-panel">
+            <div class="stat-top">
+              <span class="stat-lbl">Equipo Asignado</span>
+              <span class="stat-icon purple">⭐</span>
+            </div>
+            <div class="stat-val text-gradient-purple">Casanostra Core</div>
+            <div class="stat-desc">Growth Manager dedicado</div>
+          </div>
+        </div>
+
+        <!-- Client Section Header & Tabs -->
+        <div class="dash-content-panel glass-panel">
+          <div class="panel-header">
+            <div class="panel-tabs">
+              <button class="panel-tab active" id="cTabReqs">
+                <span>Mis Requests (Solicitudes)</span>
+              </button>
+              <button class="panel-tab" id="cTabGoals">
+                <span>Mis Metas Propuestas</span>
+              </button>
+              <button class="panel-tab" id="cTabProfile">
+                <span>👤 Mi Perfil</span>
+              </button>
+            </div>
+
+            <button class="btn-primary btn-sm" id="cOpenReqModalBtn">
+              + Nueva Solicitud de Trabajo
+            </button>
+          </div>
+
+          <!-- Client Tab 1: My Requests -->
+          <div class="tab-content active" id="cReqsTabContent">
+            <div class="requests-grid" id="clientReqsGrid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Client Tab 2: My Goals -->
+          <div class="tab-content" id="cGoalsTabContent">
+            <div class="goals-grid" id="clientGoalsGrid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Client Tab 3: Profile Page -->
+          <div class="tab-content" id="cProfileTabContent">
+            <div class="profile-layout-grid">
+              <!-- Left Column: Profile Card Preview -->
+              <div class="profile-preview-card glass-panel-gold">
+                <div class="profile-avatar-wrapper">
+                  <div class="profile-avatar-large cardAvatarCircle">
+                    <img class="cardAvatarImg" src="" alt="Foto de Perfil" style="display:none;" />
+                    <span class="cardAvatarInitials">C</span>
+                  </div>
+                  <div class="online-indicator" title="En línea"></div>
+                </div>
+
+                <h3 class="profile-card-name cardDisplayName">Client Name</h3>
+                <div class="profile-card-role cardRoleText">💼 CLIENTE / MARCA PERSONAL</div>
+                <div class="profile-card-company cardCompanyText">Marca Personal</div>
+
+                <div class="profile-card-divider"></div>
+
+                <p class="profile-card-bio cardBioText">
+                  Sin descripción agregada aún. Edita tu perfil para añadir la descripción de tu marca o empresa.
+                </p>
+
+                <div class="profile-card-details">
+                  <div class="profile-detail-item">
+                    <span class="detail-icon">📍</span>
+                    <span class="cardLocationText">Ubicación no especificada</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="detail-icon">📞</span>
+                    <span class="cardPhoneText">Teléfono no especificado</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="detail-icon">✉️</span>
+                    <span class="cardEmailText">email@ejemplo.com</span>
+                  </div>
+                </div>
+
+                <div class="profile-social-section">
+                  <div class="social-section-title">Redes Sociales & Canales</div>
+                  <div class="social-links-grid cardSocialsGrid">
+                    <!-- Rendered dynamically -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Profile Edit Form -->
+              <div class="profile-edit-card glass-panel">
+                <div class="edit-card-header">
+                  <h3>✏️ Configuración de Perfil (Cliente)</h3>
+                  <p>Configura tu foto de perfil, descripción de marca, ciudad, país y redes sociales.</p>
+                </div>
+
+                <form class="profileEditForm profile-form">
+                  <div class="form-section-title">📷 Foto de Perfil</div>
+                  <div class="form-row align-center">
+                    <div class="form-group" style="flex: 2;">
+                      <label>URL de Foto de Perfil</label>
+                      <input type="url" class="inputPhotoUrl form-input" placeholder="https://ejemplo.com/foto.jpg" />
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                      <label>Subir Imagen</label>
+                      <label class="btn-file-upload">
+                        <span>📁 Elegir</span>
+                        <input type="file" class="inputPhotoFile" accept="image/*" style="display:none;" />
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="avatar-presets-picker">
+                    <span class="preset-label">Avatares sugeridos:</span>
+                    <button type="button" class="preset-avatar-btn" data-url="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80">Avatar 1</button>
+                    <button type="button" class="preset-avatar-btn" data-url="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80">Avatar 2</button>
+                    <button type="button" class="preset-avatar-btn" data-url="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80">Avatar 3</button>
+                    <button type="button" class="preset-avatar-btn" data-url="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80">Avatar 4</button>
+                  </div>
+
+                  <div class="form-section-title" style="margin-top: 20px;">👤 Datos Principales</div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Nombre Completo / Marca *</label>
+                      <input type="text" class="inputDisplayName form-input" required placeholder="Tu nombre o marca" />
+                    </div>
+                    <div class="form-group">
+                      <label>Teléfono de Contacto</label>
+                      <input type="tel" class="inputPhone form-input" placeholder="+34 600 000 000" />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>País</label>
+                      <input type="text" class="inputCountry form-input" placeholder="Ej: España, México, Colombia" />
+                    </div>
+                    <div class="form-group">
+                      <label>Ciudad</label>
+                      <input type="text" class="inputCity form-input" placeholder="Ej: Madrid, CDMX, Medellín" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripción General de tu Marca / Proyecto</label>
+                    <textarea class="inputDescription form-textarea" rows="3" placeholder="Describe tu marca personal, empresa, propuesta de valor u objetivos de contenido..."></textarea>
+                  </div>
+
+                  <div class="form-section-title" style="margin-top: 20px;">🌐 Redes Sociales</div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Instagram</label>
+                      <input type="text" class="inputInstagram form-input" placeholder="@usuario o https://instagram.com/..." />
+                    </div>
+                    <div class="form-group">
+                      <label>LinkedIn</label>
+                      <input type="text" class="inputLinkedin form-input" placeholder="https://linkedin.com/in/usuario" />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Twitter / X</label>
+                      <input type="text" class="inputTwitter form-input" placeholder="@usuario o https://x.com/..." />
+                    </div>
+                    <div class="form-group">
+                      <label>YouTube / TikTok</label>
+                      <input type="text" class="inputYoutube form-input" placeholder="https://youtube.com/@canal" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Sitio Web / Portfolio</label>
+                    <input type="url" class="inputWebsite form-input" placeholder="https://tuweb.com" />
+                  </div>
+
+                  <div class="profile-form-footer">
+                    <span class="profileStatusMsg status-toast" style="display:none;"></span>
+                    <button type="submit" class="saveProfileBtn btn-primary">
+                      💾 Guardar Cambios de Perfil
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: Create New Request (Client) -->
+  <div class="modal-backdrop" id="newReqModal">
+    <div class="modal-card glass-panel-gold">
+      <div class="modal-header">
+        <h3>Crear Nueva Solicitud de Trabajo</h3>
+        <button class="close-modal" id="closeReqModal">&times;</button>
+      </div>
+      <form id="newReqForm" class="modal-form">
+        <div class="form-group">
+          <label>Título de la Solicitud *</label>
+          <input type="text" id="reqTitle" required placeholder="Ej: Edición de 4 Reels sobre Estrategia de Ventas" class="form-input" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tipo de Servicio *</label>
+            <select id="reqType" class="form-select">
+              <option value="video_viral">Vídeo Viral (Reels / Shorts)</option>
+              <option value="paid_ads">Campañas Paid Ads</option>
+              <option value="funnel_vsl">Funnel High-Ticket VSL</option>
+              <option value="branding_design">Diseño & Branding</option>
+              <option value="otra">Otra Solicitud</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Prioridad *</label>
+            <select id="reqPriority" class="form-select">
+              <option value="alta">Alta (Urgente)</option>
+              <option value="media" selected>Media (Normal)</option>
+              <option value="baja">Baja (Estándar)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Detalles / Descripción *</label>
+          <textarea id="reqDesc" required placeholder="Describe lo que necesitas que el equipo de Casanostra realice..." class="form-textarea" rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%;">Enviar Solicitud al Equipo Worker</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Add New Goal (Worker) -->
+  <div class="modal-backdrop" id="newGoalModal">
+    <div class="modal-card glass-panel-gold">
+      <div class="modal-header">
+        <h3>Asignar Nueva Meta a Cliente</h3>
+        <button class="close-modal" id="closeGoalModal">&times;</button>
+      </div>
+      <form id="newGoalForm" class="modal-form">
+        <div class="form-group">
+          <label>Seleccionar Cliente *</label>
+          <select id="goalClientSelect" class="form-select" required>
+            <option value="">Cargando clientes registrados...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Título de la Meta *</label>
+          <input type="text" id="goalTitle" required placeholder="Ej: Crecimiento de Audiencia en Instagram" class="form-input" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Métrica Objetivo *</label>
+            <input type="text" id="goalTargetMetric" required placeholder="Ej: +25,000 Seguidores Reales" class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Fecha Objetivo *</label>
+            <input type="date" id="goalTargetDate" required class="form-input" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%;">Asignar Meta al Cliente</button>
+      </form>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .dashboard-page {
+    min-height: 100vh;
+    background: var(--bg-dark);
+    padding-bottom: 60px;
+  }
+
+  .dash-header {
+    padding: 16px 0;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(226, 184, 89, 0.2);
+    background: rgba(7, 9, 14, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .dash-header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dash-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(226, 184, 89, 0.15);
+    border: 1px solid rgba(226, 184, 89, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dash-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+  }
+
+  .dash-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .dash-user-panel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .user-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .user-badge.worker {
+    background: rgba(226, 184, 89, 0.2);
+    border: 1px solid rgba(226, 184, 89, 0.4);
+    color: var(--accent-gold);
+  }
+
+  .user-badge.client {
+    background: rgba(0, 242, 254, 0.2);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    color: var(--accent-cyan);
+  }
+
+  .user-info {
+    text-align: right;
+  }
+
+  .user-name {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #ffffff;
+  }
+
+  .user-email {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .btn-logout {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-logout:hover {
+    background: rgba(239, 68, 68, 0.3);
+  }
+
+  /* Main Container */
+  .dash-main-container {
+    max-width: 1280px;
+    margin: 40px auto 0 auto;
+    padding: 0 24px;
+  }
+
+  .dash-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .dash-stat-card {
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .stat-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .stat-lbl {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .stat-icon {
+    font-size: 1.3rem;
+  }
+
+  .stat-val {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .stat-desc {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+
+  /* Content Panel */
+  .dash-content-panel {
+    padding: 32px;
+    border-radius: 24px;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 18px;
+  }
+
+  .panel-tabs {
+    display: flex;
+    gap: 12px;
+  }
+
+  .panel-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .panel-tab.active {
+    background: rgba(226, 184, 89, 0.15);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+  }
+
+  .tab-count {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  /* Table styling */
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .dash-table th {
+    padding: 14px 16px;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  .dash-table td {
+    padding: 18px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+  }
+
+  .status-select {
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(226, 184, 89, 0.3);
+    color: var(--accent-gold);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+  }
+
+  /* Request & Goal Cards */
+  .requests-grid, .goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .item-card {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .item-tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .tag-alta { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); }
+  .tag-media { background: rgba(226, 184, 89, 0.2); color: var(--accent-gold); border: 1px solid rgba(226, 184, 89, 0.4); }
+  .tag-baja { background: rgba(0, 242, 254, 0.2); color: var(--accent-cyan); border: 1px solid rgba(0, 242, 254, 0.4); }
+
+  .item-card h4 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .item-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    margin: 10px 0;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-cyan) 100%);
+    border-radius: 5px;
+    transition: width 0.4s ease;
+  }
+
+  /* Modals */
+  .modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(4, 6, 10, 0.85);
+    backdrop-filter: blur(16px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-backdrop.active {
+    display: flex;
+  }
+
+  .modal-card {
+    width: 100%;
+    max-width: 560px;
+    padding: 32px;
+    border-radius: 24px;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .close-modal {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .form-textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-family: var(--font-body);
+    outline: none;
+  }
+
+  /* Top Navbar Collapse Trigger & Dropdown Menu */
+  .dash-user-panel {
+    position: relative;
+  }
+
+  .nav-collapse-trigger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(226, 184, 89, 0.35);
+    padding: 6px 14px 6px 8px;
+    border-radius: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .nav-collapse-trigger:hover,
+  .nav-collapse-trigger.active {
+    background: rgba(226, 184, 89, 0.18);
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 20px rgba(226, 184, 89, 0.25);
+  }
+
+  .trigger-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .trigger-user-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+
+  .trigger-role-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+  }
+
+  .chevron-icon {
+    transition: transform 0.3s ease;
+    color: var(--accent-gold);
+  }
+
+  .nav-collapse-trigger.active .chevron-icon {
+    transform: rotate(180deg);
+  }
+
+  .avatar-circle-sm {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-cyan));
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .avatar-circle-sm img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .avatar-circle-sm span {
+    font-weight: 800;
+    color: #07090e;
+    font-size: 0.95rem;
+  }
+
+  /* Collapsible Dropdown Menu Panel */
+  .nav-collapse-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 320px;
+    background: rgba(11, 15, 25, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 184, 89, 0.35);
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(226, 184, 89, 0.12);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.96);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-collapse-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .menu-user-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px;
+  }
+
+  .menu-avatar-circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-cyan));
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .menu-avatar-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .menu-avatar-circle span {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #07090e;
+  }
+
+  .menu-user-details {
+    overflow: hidden;
+    text-align: left;
+  }
+
+  .menu-user-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .menu-user-email {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+  }
+
+  .menu-user-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+  }
+
+  .menu-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    width: 100%;
+  }
+
+  .menu-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .menu-item-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+
+  .menu-item-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(226, 184, 89, 0.2);
+    transform: translateX(4px);
+  }
+
+  .menu-icon {
+    font-size: 1.2rem;
+  }
+
+  .menu-item-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-item-text .title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .menu-item-text .sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .menu-footer {
+    padding-top: 4px;
+  }
+
+  .menu-logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .menu-logout-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+  }
+
+  /* Profile Tab Grid Layout */
+  .profile-layout-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 24px;
+  }
+
+  /* Profile Card Preview */
+  .profile-preview-card {
+    padding: 32px 24px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-avatar-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .profile-avatar-large {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-cyan) 100%);
+    padding: 3px;
+    box-shadow: 0 0 25px rgba(226, 184, 89, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .profile-avatar-large img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .profile-avatar-large span {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #07090e;
+  }
+
+  .online-indicator {
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #10b981;
+    border: 3px solid #0b0f19;
+  }
+
+  .profile-card-name {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .profile-card-role {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .profile-card-company {
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    margin-bottom: 16px;
+  }
+
+  .profile-card-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 16px 0;
+  }
+
+  .profile-card-bio {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .profile-card-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .profile-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .profile-social-section {
+    width: 100%;
+  }
+
+  .social-section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .social-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .social-badge-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .social-badge-link:hover {
+    background: rgba(226, 184, 89, 0.2);
+    border-color: rgba(226, 184, 89, 0.4);
+    color: var(--accent-gold);
+    transform: translateY(-2px);
+  }
+
+  /* Edit Profile Form Card */
+  .profile-edit-card {
+    padding: 32px;
+    border-radius: 24px;
+  }
+
+  .edit-card-header {
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 16px;
+  }
+
+  .edit-card-header h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .edit-card-header p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .form-section-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .align-center {
+    align-items: center;
+  }
+
+  .btn-file-upload {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-file-upload:hover {
+    background: rgba(0, 242, 254, 0.15);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+  }
+
+  .avatar-presets-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+
+  .preset-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .preset-avatar-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .preset-avatar-btn:hover {
+    background: var(--accent-gold);
+    color: #07090e;
+  }
+
+  .profile-form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .status-toast {
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  .status-toast.success {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+  }
+
+  @media (max-width: 992px) {
+    .profile-layout-grid {
+      grid-template-columns: 1fr;
+    }
+    .dash-stats-grid {
+      grid-template-columns: 1fr;
+    }
+    .panel-header {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<script>
+  import { 
+    getActiveSession, 
+    logout, 
+    fetchRequests, 
+    fetchGoals, 
+    updateRequestStatus, 
+    updateGoalProgress, 
+    addRequest, 
+    addGoal, 
+    fetchRegisteredClients,
+    updateUserProfile,
+    type UserProfile 
+  } from '../lib/firebase';
+
+  let activeUser: UserProfile | null = null;
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    activeUser = getActiveSession();
+
+    if (!activeUser) {
+      window.location.href = '/login';
+      return;
+    }
+
+    // Render User Header Details
+    const roleBadge = document.getElementById('userRoleBadge');
+    const roleText = document.getElementById('roleText');
+    const userNameText = document.getElementById('userNameText');
+    const userEmailText = document.getElementById('userEmailText');
+
+    if (userNameText) userNameText.textContent = activeUser.displayName;
+    if (userEmailText) userEmailText.textContent = activeUser.email;
+
+    setupProfileData();
+
+    if (activeUser.role === 'worker') {
+      roleBadge?.classList.add('worker');
+      if (roleText) roleText.textContent = '⚡ WORKER / GROWTH MANAGER';
+      document.getElementById('workerDashboard')?.style.setProperty('display', 'block');
+      await renderWorkerDashboard();
+      await populateClientDropdown();
+    } else {
+      roleBadge?.classList.add('client');
+      if (roleText) roleText.textContent = '💼 CLIENTE / MARCA PERSONAL';
+      document.getElementById('clientDashboard')?.style.setProperty('display', 'block');
+      await renderClientDashboard();
+    }
+  });
+
+  // Logout listener
+  document.getElementById('logoutBtn')?.addEventListener('click', () => {
+    logout();
+    window.location.href = '/login';
+  });
+
+  // Populate Profile Card and Inputs
+  function setupProfileData() {
+    if (!activeUser) return;
+
+    // Header Avatar
+    const headerAvatarImg = document.getElementById('headerAvatarImg') as HTMLImageElement;
+    const headerAvatarInitials = document.getElementById('headerAvatarInitials');
+    if (activeUser.photoURL && headerAvatarImg && headerAvatarInitials) {
+      headerAvatarImg.src = activeUser.photoURL;
+      headerAvatarImg.style.display = 'block';
+      headerAvatarInitials.style.display = 'none';
+    } else if (headerAvatarInitials) {
+      headerAvatarInitials.textContent = (activeUser.displayName || activeUser.email || 'U')[0].toUpperCase();
+    }
+
+    // Dropdown Menu Avatar & Info
+    const menuAvatarImg = document.getElementById('menuAvatarImg') as HTMLImageElement;
+    const menuAvatarInitials = document.getElementById('menuAvatarInitials');
+    if (activeUser.photoURL && menuAvatarImg && menuAvatarInitials) {
+      menuAvatarImg.src = activeUser.photoURL;
+      menuAvatarImg.style.display = 'block';
+      menuAvatarInitials.style.display = 'none';
+    } else if (menuAvatarInitials) {
+      menuAvatarInitials.textContent = (activeUser.displayName || activeUser.email || 'U')[0].toUpperCase();
+    }
+
+    const dropdownUserName = document.getElementById('dropdownUserName');
+    if (dropdownUserName) dropdownUserName.textContent = activeUser.displayName || 'Usuario';
+
+    const dropdownRoleText = document.getElementById('dropdownRoleText');
+    if (dropdownRoleText) {
+      dropdownRoleText.textContent = activeUser.role === 'worker' ? '⚡ WORKER / GROWTH MANAGER' : '💼 CLIENTE / MARCA PERSONAL';
+    }
+
+    // Populate profile cards elements
+    document.querySelectorAll('.cardDisplayName').forEach(el => el.textContent = activeUser?.displayName || 'Usuario');
+    document.querySelectorAll('.cardRoleText').forEach(el => {
+      el.textContent = activeUser?.role === 'worker' ? '⚡ WORKER / GROWTH MANAGER' : '💼 CLIENTE / MARCA PERSONAL';
+    });
+    document.querySelectorAll('.cardCompanyText').forEach(el => {
+      el.textContent = activeUser?.companyName || (activeUser?.role === 'worker' ? 'Casanostra Staff' : 'Marca Personal');
+    });
+
+    document.querySelectorAll('.cardBioText').forEach(el => {
+      el.textContent = activeUser?.description || (
+        activeUser?.role === 'worker'
+          ? 'Sin descripción agregada aún. Edita tu perfil para añadir tu resumen profesional o especialidad.'
+          : 'Sin descripción agregada aún. Edita tu perfil para añadir la descripción de tu marca o empresa.'
+      );
+    });
+
+    document.querySelectorAll('.cardLocationText').forEach(el => {
+      const loc = [activeUser?.city, activeUser?.country].filter(Boolean).join(', ');
+      el.textContent = loc || 'Ubicación no especificada';
+    });
+
+    document.querySelectorAll('.cardPhoneText').forEach(el => {
+      el.textContent = activeUser?.phone || 'Teléfono no especificado';
+    });
+
+    document.querySelectorAll('.cardEmailText').forEach(el => {
+      el.textContent = activeUser?.email || '';
+    });
+
+    // Avatars in profile preview cards
+    document.querySelectorAll('.cardAvatarCircle').forEach(circle => {
+      const img = circle.querySelector('.cardAvatarImg') as HTMLImageElement;
+      const initials = circle.querySelector('.cardAvatarInitials');
+      if (activeUser?.photoURL && img && initials) {
+        img.src = activeUser.photoURL;
+        img.style.display = 'block';
+        initials.style.display = 'none';
+      } else if (initials) {
+        initials.textContent = (activeUser?.displayName || 'U')[0].toUpperCase();
+      }
+    });
+
+    // Social Links Badges
+    document.querySelectorAll('.cardSocialsGrid').forEach(grid => {
+      const socials = activeUser?.socials || {};
+      const links = [];
+      if (socials.instagram) links.push({ name: 'Instagram', url: formatSocialUrl(socials.instagram, 'instagram.com/'), icon: '📸' });
+      if (socials.linkedin) links.push({ name: 'LinkedIn', url: formatSocialUrl(socials.linkedin, 'linkedin.com/in/'), icon: '💼' });
+      if (socials.twitter) links.push({ name: 'Twitter/X', url: formatSocialUrl(socials.twitter, 'x.com/'), icon: '🐦' });
+      if (socials.youtube) links.push({ name: 'YouTube', url: formatSocialUrl(socials.youtube, 'youtube.com/'), icon: '▶️' });
+      if (socials.website) links.push({ name: 'Web', url: formatSocialUrl(socials.website, ''), icon: '🌐' });
+
+      if (links.length === 0) {
+        grid.innerHTML = '<span style="font-size:0.8rem; color:var(--text-dim)">No se han añadido redes sociales aún.</span>';
+      } else {
+        grid.innerHTML = links.map(l => `
+          <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="social-badge-link">
+            <span>${l.icon}</span>
+            <span>${l.name}</span>
+          </a>
+        `).join('');
+      }
+    });
+
+    // Fill form inputs
+    document.querySelectorAll('.profileEditForm').forEach(form => {
+      const f = form as HTMLFormElement;
+      const photoInput = f.querySelector('.inputPhotoUrl') as HTMLInputElement;
+      const nameInput = f.querySelector('.inputDisplayName') as HTMLInputElement;
+      const phoneInput = f.querySelector('.inputPhone') as HTMLInputElement;
+      const countryInput = f.querySelector('.inputCountry') as HTMLInputElement;
+      const cityInput = f.querySelector('.inputCity') as HTMLInputElement;
+      const descInput = f.querySelector('.inputDescription') as HTMLTextAreaElement;
+
+      if (photoInput) photoInput.value = activeUser?.photoURL || '';
+      if (nameInput) nameInput.value = activeUser?.displayName || '';
+      if (phoneInput) phoneInput.value = activeUser?.phone || '';
+      if (countryInput) countryInput.value = activeUser?.country || '';
+      if (cityInput) cityInput.value = activeUser?.city || '';
+      if (descInput) descInput.value = activeUser?.description || '';
+
+      const s = activeUser?.socials || {};
+      const igInput = f.querySelector('.inputInstagram') as HTMLInputElement;
+      const liInput = f.querySelector('.inputLinkedin') as HTMLInputElement;
+      const twInput = f.querySelector('.inputTwitter') as HTMLInputElement;
+      const ytInput = f.querySelector('.inputYoutube') as HTMLInputElement;
+      const webInput = f.querySelector('.inputWebsite') as HTMLInputElement;
+
+      if (igInput) igInput.value = s.instagram || '';
+      if (liInput) liInput.value = s.linkedin || '';
+      if (twInput) twInput.value = s.twitter || '';
+      if (ytInput) ytInput.value = s.youtube || '';
+      if (webInput) webInput.value = s.website || '';
+    });
+  }
+
+  function formatSocialUrl(value: string, domainPrefix: string): string {
+    if (!value) return '';
+    let val = value.trim();
+    if (val.startsWith('http://') || val.startsWith('https://')) return val;
+    if (val.startsWith('@')) val = val.substring(1);
+    if (domainPrefix && !val.includes(domainPrefix)) {
+      return `https://${domainPrefix}${val}`;
+    }
+    return `https://${val}`;
+  }
+
+  // Populate dynamic registered clients for Worker goal assignment
+  async function populateClientDropdown() {
+    const select = document.getElementById('goalClientSelect') as HTMLSelectElement;
+    if (!select) return;
+    select.innerHTML = '<option value="">Cargando clientes registrados...</option>';
+    const clients = await fetchRegisteredClients();
+    if (clients.length === 0) {
+      select.innerHTML = '<option value="">No hay clientes registrados en el sistema aún</option>';
+      return;
+    }
+    select.innerHTML = '<option value="">-- Selecciona un cliente registrado --</option>' +
+      clients.map(c => `<option value="${c.uid}|${c.displayName}">${c.displayName} (${c.companyName || c.email})</option>`).join('');
+  }
+
+  // --- WORKER DASHBOARD LOGIC ---
+  async function renderWorkerDashboard() {
+    if (!activeUser) return;
+    const reqs = await fetchRequests(activeUser);
+    const goals = await fetchGoals(activeUser);
+
+    const pending = reqs.filter(r => r.status !== 'completado').length;
+    const activeGoalsCount = goals.filter(g => g.status === 'en_progreso').length;
+
+    const wStatReqs = document.getElementById('wStatPendingReqs');
+    const wStatGoals = document.getElementById('wStatActiveGoals');
+    const wReqCount = document.getElementById('wReqCount');
+    const wGoalCount = document.getElementById('wGoalCount');
+
+    if (wStatReqs) wStatReqs.textContent = `${pending} Solicitudes`;
+    if (wStatGoals) wStatGoals.textContent = `${activeGoalsCount} Metas`;
+    if (wReqCount) wReqCount.textContent = `${reqs.length}`;
+    if (wGoalCount) wGoalCount.textContent = `${goals.length}`;
+
+    // Render Worker Requests Table
+    const tbody = document.getElementById('workerReqsTableBody');
+    if (tbody) {
+      if (reqs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:var(--text-dim)">No hay solicitudes registradas en la plataforma.</td></tr>';
+      } else {
+        tbody.innerHTML = reqs.map(r => `
+          <tr>
+            <td><strong>${r.clientName}</strong></td>
+            <td>${r.title}</td>
+            <td><span class="badge badge-gold" style="font-size:0.75rem">${r.type}</span></td>
+            <td><span class="item-tag tag-${r.priority}">${r.priority}</span></td>
+            <td>${r.createdAt}</td>
+            <td>
+              <select class="status-select" data-reqid="${r.id}">
+                <option value="pendiente" ${r.status === 'pendiente' ? 'selected' : ''}>⏳ Pendiente</option>
+                <option value="en_proceso" ${r.status === 'en_proceso' ? 'selected' : ''}>⚙️ En Proceso</option>
+                <option value="en_revision" ${r.status === 'en_revision' ? 'selected' : ''}>👁️ En Revisión</option>
+                <option value="completado" ${r.status === 'completado' ? 'selected' : ''}>✅ Completado</option>
+              </select>
+            </td>
+          </tr>
+        `).join('');
+
+        tbody.querySelectorAll('.status-select').forEach(select => {
+          select.addEventListener('change', async (e) => {
+            const target = e.target as HTMLSelectElement;
+            const reqId = target.dataset.reqid;
+            if (reqId) {
+              await updateRequestStatus(reqId, target.value as any);
+              await renderWorkerDashboard();
+            }
+          });
+        });
+      }
+    }
+
+    // Render Worker Goals Grid
+    const goalsGrid = document.getElementById('workerGoalsGrid');
+    if (goalsGrid) {
+      if (goals.length === 0) {
+        goalsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:30px; color:var(--text-dim)">No hay metas asignadas en el sistema. Haz clic en "Asignar Nueva Meta a Cliente" para comenzar.</div>';
+      } else {
+        goalsGrid.innerHTML = goals.map(g => `
+          <div class="item-card glass-panel">
+            <div class="item-header">
+              <span class="badge badge-cyan" style="font-size:0.75rem">${g.clientName}</span>
+              <span class="badge badge-gold" style="font-size:0.75rem">${g.status}</span>
+            </div>
+            <h4>${g.title}</h4>
+            <p>Métrica Meta: <strong>${g.targetMetric}</strong></p>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:0.85rem">
+                <span>Progreso:</span>
+                <strong style="color:var(--accent-gold)">${g.currentProgress}%</strong>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: ${g.currentProgress}%"></div>
+              </div>
+            </div>
+            <div style="margin-top:16px; display:flex; gap:8px;">
+              <input type="range" min="0" max="100" value="${g.currentProgress}" class="worker-goal-slider" data-goalid="${g.id}" style="width:100%" />
+              <button class="btn-primary btn-sm save-goal-btn" data-goalid="${g.id}">Guardar</button>
+            </div>
+          </div>
+        `).join('');
+
+        goalsGrid.querySelectorAll('.save-goal-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            const goalId = (e.currentTarget as HTMLElement).dataset.goalid;
+            const slider = goalsGrid.querySelector(`.worker-goal-slider[data-goalid="${goalId}"]`) as HTMLInputElement;
+            if (goalId && slider) {
+              const val = parseInt(slider.value);
+              const status = val >= 100 ? 'alcanzada' : 'en_progreso';
+              await updateGoalProgress(goalId, val, status);
+              await renderWorkerDashboard();
+            }
+          });
+        });
+      }
+    }
+  }
+
+  // --- CLIENT DASHBOARD LOGIC ---
+  async function renderClientDashboard() {
+    if (!activeUser) return;
+    const reqs = await fetchRequests(activeUser);
+    const goals = await fetchGoals(activeUser);
+
+    const cStatReqs = document.getElementById('cStatReqs');
+    const cStatGoals = document.getElementById('cStatGoals');
+
+    if (cStatReqs) cStatReqs.textContent = `${reqs.length} Solicitudes`;
+    if (cStatGoals) cStatGoals.textContent = `${goals.length} Metas`;
+
+    // Render Client Requests Grid
+    const reqsGrid = document.getElementById('clientReqsGrid');
+    if (reqsGrid) {
+      if (reqs.length === 0) {
+        reqsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:30px; color:var(--text-dim)">Aún no has creado ninguna solicitud. Haz clic en "Nueva Solicitud de Servicio" para realizar un pedido a tu equipo.</div>';
+      } else {
+        reqsGrid.innerHTML = reqs.map(r => `
+          <div class="item-card glass-panel">
+            <div class="item-header">
+              <span class="item-tag tag-${r.priority}">Prioridad ${r.priority}</span>
+              <span class="badge badge-gold" style="font-size:0.75rem">${r.status.toUpperCase()}</span>
+            </div>
+            <h4>${r.title}</h4>
+            <p>${r.description}</p>
+            <div style="font-size:0.8rem; color:var(--text-dim); border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+              Atendido por: <strong>${r.assignedWorker}</strong>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Render Client Goals Grid
+    const goalsGrid = document.getElementById('clientGoalsGrid');
+    if (goalsGrid) {
+      if (goals.length === 0) {
+        goalsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:30px; color:var(--text-dim)">Tu equipo aún no ha establecido metas específicas para tu marca personal.</div>';
+      } else {
+        goalsGrid.innerHTML = goals.map(g => `
+          <div class="item-card glass-panel">
+            <div class="item-header">
+              <span class="badge badge-cyan" style="font-size:0.75rem">Meta de Crecimiento</span>
+              <span class="badge badge-gold" style="font-size:0.75rem">${g.status}</span>
+            </div>
+            <h4>${g.title}</h4>
+            <p>Métrica Meta: <strong style="color:#ffffff">${g.targetMetric}</strong></p>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:0.85rem">
+                <span>Avance Estimado:</span>
+                <strong style="color:var(--accent-gold)">${g.currentProgress}%</strong>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: ${g.currentProgress}%"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  // Navbar Profile Activation Helper
+  function activateProfileTab() {
+    if (!activeUser) return;
+    if (activeUser.role === 'worker') {
+      document.getElementById('wTabProfile')?.click();
+    } else {
+      document.getElementById('cTabProfile')?.click();
+    }
+  }
+
+  // Collapse Dropdown Toggle Listener
+  const navCollapseTrigger = document.getElementById('navCollapseTrigger');
+  const navCollapseMenu = document.getElementById('navCollapseMenu');
+
+  function closeNavCollapseMenu() {
+    navCollapseTrigger?.classList.remove('active');
+    navCollapseMenu?.classList.remove('active');
+  }
+
+  function toggleNavCollapseMenu() {
+    navCollapseTrigger?.classList.toggle('active');
+    navCollapseMenu?.classList.toggle('active');
+  }
+
+  navCollapseTrigger?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleNavCollapseMenu();
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('#navCollapseTrigger') && !target.closest('#navCollapseMenu')) {
+      closeNavCollapseMenu();
+    }
+  });
+
+  // Dropdown Menu Links Navigation Handlers
+  document.getElementById('menuBtnProfile')?.addEventListener('click', () => {
+    activateProfileTab();
+    closeNavCollapseMenu();
+  });
+
+  document.getElementById('menuBtnRequests')?.addEventListener('click', () => {
+    if (activeUser?.role === 'worker') {
+      document.getElementById('wTabReqs')?.click();
+    } else {
+      document.getElementById('cTabReqs')?.click();
+    }
+    closeNavCollapseMenu();
+  });
+
+  document.getElementById('menuBtnGoals')?.addEventListener('click', () => {
+    if (activeUser?.role === 'worker') {
+      document.getElementById('wTabGoals')?.click();
+    } else {
+      document.getElementById('cTabGoals')?.click();
+    }
+    closeNavCollapseMenu();
+  });
+
+  // Worker Tabs Toggle
+  document.getElementById('wTabReqs')?.addEventListener('click', () => {
+    document.getElementById('wTabReqs')?.classList.add('active');
+    document.getElementById('wTabGoals')?.classList.remove('active');
+    document.getElementById('wTabProfile')?.classList.remove('active');
+
+    document.getElementById('wReqsTabContent')?.classList.add('active');
+    document.getElementById('wGoalsTabContent')?.classList.remove('active');
+    document.getElementById('wProfileTabContent')?.classList.remove('active');
+  });
+
+  document.getElementById('wTabGoals')?.addEventListener('click', () => {
+    document.getElementById('wTabGoals')?.classList.add('active');
+    document.getElementById('wTabReqs')?.classList.remove('active');
+    document.getElementById('wTabProfile')?.classList.remove('active');
+
+    document.getElementById('wGoalsTabContent')?.classList.add('active');
+    document.getElementById('wReqsTabContent')?.classList.remove('active');
+    document.getElementById('wProfileTabContent')?.classList.remove('active');
+  });
+
+  document.getElementById('wTabProfile')?.addEventListener('click', () => {
+    document.getElementById('wTabProfile')?.classList.add('active');
+    document.getElementById('wTabReqs')?.classList.remove('active');
+    document.getElementById('wTabGoals')?.classList.remove('active');
+
+    document.getElementById('wProfileTabContent')?.classList.add('active');
+    document.getElementById('wReqsTabContent')?.classList.remove('active');
+    document.getElementById('wGoalsTabContent')?.classList.remove('active');
+  });
+
+  // Client Tabs Toggle
+  document.getElementById('cTabReqs')?.addEventListener('click', () => {
+    document.getElementById('cTabReqs')?.classList.add('active');
+    document.getElementById('cTabGoals')?.classList.remove('active');
+    document.getElementById('cTabProfile')?.classList.remove('active');
+
+    document.getElementById('cReqsTabContent')?.classList.add('active');
+    document.getElementById('cGoalsTabContent')?.classList.remove('active');
+    document.getElementById('cProfileTabContent')?.classList.remove('active');
+  });
+
+  document.getElementById('cTabGoals')?.addEventListener('click', () => {
+    document.getElementById('cTabGoals')?.classList.add('active');
+    document.getElementById('cTabReqs')?.classList.remove('active');
+    document.getElementById('cTabProfile')?.classList.remove('active');
+
+    document.getElementById('cGoalsTabContent')?.classList.add('active');
+    document.getElementById('cReqsTabContent')?.classList.remove('active');
+    document.getElementById('cProfileTabContent')?.classList.remove('active');
+  });
+
+  document.getElementById('cTabProfile')?.addEventListener('click', () => {
+    document.getElementById('cTabProfile')?.classList.add('active');
+    document.getElementById('cTabReqs')?.classList.remove('active');
+    document.getElementById('cTabGoals')?.classList.remove('active');
+
+    document.getElementById('cProfileTabContent')?.classList.add('active');
+    document.getElementById('cReqsTabContent')?.classList.remove('active');
+    document.getElementById('cGoalsTabContent')?.classList.remove('active');
+  });
+
+  // Profile Form Event Handlers (Form Submit, Preset Avatars & Image File Upload)
+  document.querySelectorAll('.profileEditForm').forEach(form => {
+    // Preset buttons
+    form.querySelectorAll('.preset-avatar-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const url = (e.currentTarget as HTMLElement).dataset.url;
+        if (url) {
+          const photoInput = form.querySelector('.inputPhotoUrl') as HTMLInputElement;
+          if (photoInput) photoInput.value = url;
+        }
+      });
+    });
+
+    // File upload handler
+    const fileInput = form.querySelector('.inputPhotoFile') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.addEventListener('change', (e) => {
+        const target = e.target as HTMLInputElement;
+        if (target.files && target.files[0]) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const dataUrl = event.target?.result as string;
+            const photoInput = form.querySelector('.inputPhotoUrl') as HTMLInputElement;
+            if (photoInput && dataUrl) {
+              photoInput.value = dataUrl;
+            }
+          };
+          reader.readAsDataURL(target.files[0]);
+        }
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!activeUser) return;
+
+      const submitBtn = form.querySelector('.saveProfileBtn') as HTMLButtonElement;
+      const statusToast = form.querySelector('.profileStatusMsg') as HTMLElement;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ Guardando cambios...';
+      }
+
+      const photoURL = (form.querySelector('.inputPhotoUrl') as HTMLInputElement).value.trim();
+      const displayName = (form.querySelector('.inputDisplayName') as HTMLInputElement).value.trim();
+      const phone = (form.querySelector('.inputPhone') as HTMLInputElement).value.trim();
+      const country = (form.querySelector('.inputCountry') as HTMLInputElement).value.trim();
+      const city = (form.querySelector('.inputCity') as HTMLInputElement).value.trim();
+      const description = (form.querySelector('.inputDescription') as HTMLTextAreaElement).value.trim();
+
+      const instagram = (form.querySelector('.inputInstagram') as HTMLInputElement).value.trim();
+      const linkedin = (form.querySelector('.inputLinkedin') as HTMLInputElement).value.trim();
+      const twitter = (form.querySelector('.inputTwitter') as HTMLInputElement).value.trim();
+      const youtube = (form.querySelector('.inputYoutube') as HTMLInputElement).value.trim();
+      const website = (form.querySelector('.inputWebsite') as HTMLInputElement).value.trim();
+
+      try {
+        const updated = await updateUserProfile(activeUser.uid, {
+          displayName: displayName || activeUser.displayName,
+          photoURL,
+          phone,
+          country,
+          city,
+          description,
+          socials: {
+            instagram,
+            linkedin,
+            twitter,
+            youtube,
+            website
+          }
+        });
+
+        activeUser = updated;
+        setupProfileData();
+
+        const userNameText = document.getElementById('userNameText');
+        if (userNameText) userNameText.textContent = updated.displayName;
+
+        if (statusToast) {
+          statusToast.textContent = '✅ ¡Perfil actualizado con éxito!';
+          statusToast.className = 'profileStatusMsg status-toast success';
+          statusToast.style.display = 'inline-block';
+          setTimeout(() => {
+            statusToast.style.display = 'none';
+          }, 3500);
+        }
+      } catch (err: any) {
+        alert('Error al actualizar el perfil: ' + err.message);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '💾 Guardar Cambios de Perfil';
+        }
+      }
+    });
+  });
+
+  // Client Modal
+  const newReqModal = document.getElementById('newReqModal');
+  document.getElementById('cOpenReqModalBtn')?.addEventListener('click', () => newReqModal?.classList.add('active'));
+  document.getElementById('closeReqModal')?.addEventListener('click', () => newReqModal?.classList.remove('active'));
+
+  document.getElementById('newReqForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!activeUser) return;
+
+    const title = (document.getElementById('reqTitle') as HTMLInputElement).value;
+    const type = (document.getElementById('reqType') as HTMLSelectElement).value as any;
+    const priority = (document.getElementById('reqPriority') as HTMLSelectElement).value as any;
+    const description = (document.getElementById('reqDesc') as HTMLTextAreaElement).value;
+
+    await addRequest({
+      clientId: activeUser.uid,
+      clientName: activeUser.displayName,
+      title,
+      type,
+      priority,
+      description,
+      status: 'pendiente',
+      assignedWorker: 'Equipo Casanostra Core'
+    });
+
+    newReqModal?.classList.remove('active');
+    (e.target as HTMLFormElement).reset();
+    await renderClientDashboard();
+  });
+
+  // Worker Modal
+  const newGoalModal = document.getElementById('newGoalModal');
+  document.getElementById('wOpenGoalModalBtn')?.addEventListener('click', async () => {
+    await populateClientDropdown();
+    newGoalModal?.classList.add('active');
+  });
+  document.getElementById('closeGoalModal')?.addEventListener('click', () => newGoalModal?.classList.remove('active'));
+
+  document.getElementById('newGoalForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const selectVal = (document.getElementById('goalClientSelect') as HTMLSelectElement).value;
+    if (!selectVal) return;
+
+    const [clientId, clientName] = selectVal.split('|');
+
+    const title = (document.getElementById('goalTitle') as HTMLInputElement).value;
+    const targetMetric = (document.getElementById('goalTargetMetric') as HTMLInputElement).value;
+    const targetDate = (document.getElementById('goalTargetDate') as HTMLInputElement).value;
+
+    await addGoal({
+      clientId,
+      clientName,
+      title,
+      targetMetric,
+      currentProgress: 0,
+      status: 'en_progreso',
+      targetDate
+    });
+
+    newGoalModal?.classList.remove('active');
+    (e.target as HTMLFormElement).reset();
+    await renderWorkerDashboard();
+  });
+</script>

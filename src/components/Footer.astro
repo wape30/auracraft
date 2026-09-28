@@ -1,0 +1,242 @@
+---
+---
+
+<footer class="footer-section">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <a href="#" class="nav-brand">
+          <div class="brand-logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 17L12 22L22 17" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 12L12 17L22 12" stroke="#00F2FE" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">CASANOSTRA</span>
+            <span class="brand-sub">MARKETING AGENCY</span>
+          </div>
+        </a>
+
+        <p class="footer-bio">
+          Agencia boutique líder en creación, evolución y monetización de marcas personales y ejecutivas de alto impacto. Seguidores reales, autoridad inquebrantable y crecimiento sostenible.
+        </p>
+
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Columns -->
+      <div class="footer-links-col">
+        <h4 class="col-title">Metodología</h4>
+        <ul>
+          <li><a href="#metodologia">Génesis & Identidad</a></li>
+          <li><a href="#metodologia">Fábrica Video Viral</a></li>
+          <li><a href="#metodologia">Paid Growth Ads</a></li>
+          <li><a href="#metodologia">Monetización High-Ticket</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="col-title">Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Marca Personal 360°</a></li>
+          <li><a href="#servicios">Producción Reels & Shorts</a></li>
+          <li><a href="#servicios">Growth Paid Ads</a></li>
+          <li><a href="#servicios">Embudos VSL</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter Column -->
+      <div class="footer-newsletter">
+        <h4 class="col-title">Newsletter de Autoridad</h4>
+        <p>Recibe cada semana tácticas exclusivas sobre escalamiento de marca personal y ventas high-ticket.</p>
+
+        <form class="nl-form" id="nlForm">
+          <input type="email" required placeholder="Tu correo electrónico..." class="nl-input" />
+          <button type="submit" class="btn-primary btn-sm">Unirme</button>
+        </form>
+        <div id="nlSuccess" style="display: none; font-size: 0.8rem; color: #10B981; margin-top: 8px;">
+          ✓ ¡Suscripción confirmada!
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Casanostra Marketing Agency. Todos los derechos reservados.</p>
+      <div class="legal-links">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Aviso Legal</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-section {
+    background: #040609;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 80px;
+    padding-bottom: 40px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-bio {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .social-icon:hover {
+    background: rgba(226, 184, 89, 0.15);
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+  }
+
+  .col-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .footer-links-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-links-col a {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .footer-links-col a:hover {
+    color: var(--accent-gold);
+  }
+
+  .footer-newsletter p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .nl-form {
+    display: flex;
+    gap: 8px;
+  }
+
+  .nl-input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 0.88rem;
+    outline: none;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  .legal-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .legal-links a:hover {
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 992px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  const nlForm = document.getElementById('nlForm');
+  const nlSuccess = document.getElementById('nlSuccess');
+
+  nlForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    nlForm.style.display = 'none';
+    if (nlSuccess) nlSuccess.style.display = 'block';
+  });
+</script>

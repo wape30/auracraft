@@ -1,0 +1,392 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Opciones y Configuración de Tema | Casanostra Marketing Agency">
+  <div class="options-page">
+    <!-- Header Navbar -->
+    <header class="opt-header glass-panel">
+      <div class="opt-header-container">
+        <div class="opt-brand">
+          <a href="/dashboard" class="brand-logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 17L12 22L22 17" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 12L12 17L22 12" stroke="#00F2FE" stroke-width="2"/>
+            </svg>
+          </a>
+          <div>
+            <div class="opt-title">CASANOSTRA OPCIONES</div>
+            <div class="opt-sub">Personalización de Experiencia Visual</div>
+          </div>
+        </div>
+
+        <div class="opt-nav-actions">
+          <a href="/dashboard" class="btn-secondary btn-sm">⚡ Ir al Dashboard</a>
+          <a href="/busqueda" class="btn-secondary btn-sm">🔍 Directorio Búsqueda</a>
+          <a href="/" class="btn-secondary btn-sm">🌐 Sitio Web</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="opt-main-container">
+      <div class="opt-intro-card glass-panel animate-on-scroll">
+        <div class="badge badge-gold" style="margin-bottom: 12px;">⚙️ Preferencias del Sistema</div>
+        <h2>Personaliza la Apariencia Visual</h2>
+        <p>Selecciona tu paleta de colores preferida. Esta configuración se aplicará automáticamente en todo el sistema y en tus futuras sesiones.</p>
+      </div>
+
+      <div class="theme-selection-grid">
+        <!-- Card 1: Dark Mode -->
+        <div class="theme-card glass-panel-gold" id="cardThemeDark" data-theme-val="dark">
+          <div class="theme-card-preview dark-preview">
+            <div class="preview-header">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+              <span class="preview-title">Modo Oscuro Insignia</span>
+            </div>
+            <div class="preview-body">
+              <div class="preview-badge gold">CASANOSTRA DARK</div>
+              <div class="preview-bar gold"></div>
+              <div class="preview-bar cyan"></div>
+              <div class="preview-bar purple"></div>
+            </div>
+          </div>
+
+          <div class="theme-card-info">
+            <div class="theme-title-row">
+              <h3>🌙 Modo Oscuro (Dark Mode)</h3>
+              <span class="active-badge" id="badgeDarkActive" style="display:none;">ACTIVO</span>
+            </div>
+            <p>Diseño insignia glassmorphism con fondos nocturnos y resplandores degradados en oro y cian. Reduce la fatiga visual.</p>
+            <button class="btn-primary select-theme-btn" data-theme-val="dark" style="width: 100%; margin-top: 16px;">
+              Aplicar Tema Oscuro
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Light Mode -->
+        <div class="theme-card glass-panel" id="cardThemeLight" data-theme-val="light">
+          <div class="theme-card-preview light-preview">
+            <div class="preview-header">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+              <span class="preview-title">Modo Claro Elegante</span>
+            </div>
+            <div class="preview-body">
+              <div class="preview-badge cyan">CASANOSTRA LIGHT</div>
+              <div class="preview-bar gold"></div>
+              <div class="preview-bar cyan"></div>
+              <div class="preview-bar purple"></div>
+            </div>
+          </div>
+
+          <div class="theme-card-info">
+            <div class="theme-title-row">
+              <h3>☀️ Modo Claro (Light Mode)</h3>
+              <span class="active-badge" id="badgeLightActive" style="display:none;">ACTIVO</span>
+            </div>
+            <p>Diseño limpio y pulcro sobre fondos claros contrastados con acentos cálidos y azul océano. Máxima nitidez durante el día.</p>
+            <button class="btn-secondary select-theme-btn" data-theme-val="light" style="width: 100%; margin-top: 16px;">
+              Aplicar Tema Claro
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="themeStatusToast" class="theme-toast" style="display: none;">
+        <span>✨ ¡Paleta de colores actualizada con éxito!</span>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .options-page {
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+
+  .opt-header {
+    padding: 16px 0;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(226, 184, 89, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .opt-header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .opt-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(226, 184, 89, 0.15);
+    border: 1px solid rgba(226, 184, 89, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .opt-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .opt-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .opt-nav-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  .opt-main-container {
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+    padding: 0 24px;
+  }
+
+  .opt-intro-card {
+    padding: 32px;
+    border-radius: 24px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .opt-intro-card h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .opt-intro-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .theme-selection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .theme-card {
+    padding: 24px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .theme-card.active-theme {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 30px rgba(226, 184, 89, 0.25);
+  }
+
+  .theme-card-preview {
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dark-preview {
+    background: #07090e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .light-preview {
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .preview-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background: #ef4444; }
+  .dot.yellow { background: #eab308; }
+  .dot.green { background: #10b981; }
+
+  .preview-title {
+    font-size: 0.72rem;
+    color: #9ca3af;
+    margin-left: 6px;
+  }
+
+  .light-preview .preview-title {
+    color: #64748b;
+  }
+
+  .preview-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .preview-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 6px;
+    align-self: flex-start;
+  }
+
+  .preview-badge.gold {
+    background: rgba(226, 184, 89, 0.2);
+    color: #e2b859;
+  }
+
+  .preview-badge.cyan {
+    background: rgba(2, 132, 199, 0.2);
+    color: #0284c7;
+  }
+
+  .preview-bar {
+    height: 8px;
+    border-radius: 4px;
+    width: 80%;
+  }
+
+  .preview-bar.gold { background: var(--accent-gold); width: 90%; }
+  .preview-bar.cyan { background: var(--accent-cyan); width: 65%; }
+  .preview-bar.purple { background: var(--accent-purple); width: 45%; }
+
+  .theme-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .theme-title-row h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .active-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+  }
+
+  .theme-card-info p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .theme-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(16, 185, 129, 0.9);
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+
+  @media (max-width: 768px) {
+    .theme-selection-grid {
+      grid-template-columns: 1fr;
+    }
+    .opt-nav-actions {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentTheme = localStorage.getItem('casanostra_theme') || 'dark';
+    applyThemeUI(currentTheme);
+
+    document.querySelectorAll('.select-theme-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const selected = (e.currentTarget as HTMLElement).dataset.themeVal || 'dark';
+        setTheme(selected);
+      });
+    });
+  });
+
+  function setTheme(themeVal: string) {
+    document.documentElement.setAttribute('data-theme', themeVal);
+    localStorage.setItem('casanostra_theme', themeVal);
+    applyThemeUI(themeVal);
+
+    const toast = document.getElementById('themeStatusToast');
+    if (toast) {
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+  }
+
+  function applyThemeUI(themeVal: string) {
+    const darkCard = document.getElementById('cardThemeDark');
+    const lightCard = document.getElementById('cardThemeLight');
+    const badgeDark = document.getElementById('badgeDarkActive');
+    const badgeLight = document.getElementById('badgeLightActive');
+
+    if (themeVal === 'light') {
+      lightCard?.classList.add('active-theme');
+      darkCard?.classList.remove('active-theme');
+      if (badgeLight) badgeLight.style.display = 'inline-block';
+      if (badgeDark) badgeDark.style.display = 'none';
+    } else {
+      darkCard?.classList.add('active-theme');
+      lightCard?.classList.remove('active-theme');
+      if (badgeDark) badgeDark.style.display = 'inline-block';
+      if (badgeLight) badgeLight.style.display = 'none';
+    }
+  }
+</script>

@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import BrandEvolution from '../components/BrandEvolution.astro';
+import GrowthCalculator from '../components/GrowthCalculator.astro';
+import Services from '../components/Services.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import Manifesto from '../components/Manifesto.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ContactSection from '../components/ContactSection.astro';
+import AuditModal from '../components/AuditModal.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+	title="Casanostra Marketing Agency | Evolución de Marca Personal & Crecimiento en Ventas y Seguidores Reales"
+	description="Agencia boutique especializada en creación y evolución de marca personal para ejecutivos, fundadores y consultores. Garantizamos seguidores reales y crecimiento en ventas."
+>
+	<Navbar />
+	<main>
+		<Hero />
+		<StatsBar />
+		<BrandEvolution />
+		<GrowthCalculator />
+		<Services />
+		<CaseStudies />
+		<Manifesto />
+		<Testimonials />
+		<ContactSection />
+	</main>
+	<AuditModal />
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+</style>

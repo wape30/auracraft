@@ -1,0 +1,192 @@
+---
+---
+
+<section class="section-container" id="manifiesto">
+  <div class="manifesto-wrapper glass-panel">
+    <div class="manifesto-grid">
+      <div class="manifesto-content">
+        <div class="badge badge-gold">El Manifiesto Casanostra</div>
+        <h2>No Construimos "Influencers Vacíos". <br/><span class="text-gradient-gold">Construimos Imperios de Autoridad.</span></h2>
+        
+        <p class="manifesto-lead">
+          En el mercado digital actual, los métricos de vanidad (likes comprados y seguidores sin capacidad de compra) no pagan tus facturas ni sostienen una empresa.
+        </p>
+
+        <div class="manifesto-bullets">
+          <div class="bullet-item">
+            <div class="bullet-icon cross">✕</div>
+            <div>
+              <strong>Seguidores de Bots vs Audiencia Real</strong>
+              <p>Rechazamos las tácticas baratas de sorteos o bots. Cada seguidor ganado con Casanostra es una persona real interesada en lo que vendes.</p>
+            </div>
+          </div>
+
+          <div class="bullet-item">
+            <div class="bullet-icon check">✓</div>
+            <div>
+              <strong>Storytelling Emocional + Producción Luxury</strong>
+              <p>Tu conocimiento merece ser presentado con la misma dignidad y calidad visual de un documental de Netflix o un spot publicitario de lujo.</p>
+            </div>
+          </div>
+
+          <div class="bullet-item">
+            <div class="bullet-icon check">✓</div>
+            <div>
+              <strong>Conversión Directa a Ventas</strong>
+              <p>No somos una agencia de diseño estético sin dirección. Todo contenido responde a un embudo de conversión diseñado para retornar tu inversión.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contacto" class="btn-primary" style="margin-top: 10px;">
+          Formar Parte del 1% Dominante
+        </a>
+      </div>
+
+      <!-- Manifesto Image Visual -->
+      <div class="manifesto-visual">
+        <div class="visual-card">
+          <img 
+            src="/images/brand_transformation.jpg" 
+            alt="Evolución de Marca Personal Casanostra" 
+            class="manifesto-img"
+            loading="lazy"
+          />
+          <div class="visual-caption">
+            <span>Transformación & Escala de Marca Personal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .manifesto-wrapper {
+    padding: 60px 48px;
+    border-radius: 32px;
+    background: rgba(14, 17, 26, 0.85);
+    border: 1px solid rgba(226, 184, 89, 0.3);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(226, 184, 89, 0.1);
+  }
+
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .manifesto-content h2 {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 900;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    line-height: 1.12;
+  }
+
+  .manifesto-lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .manifesto-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+
+  .bullet-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .bullet-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .bullet-icon.cross {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .bullet-icon.check {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .bullet-item strong {
+    font-size: 1.05rem;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .bullet-item p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Visual */
+  .visual-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(226, 184, 89, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+  }
+
+  .manifesto-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+  }
+
+  .visual-card:hover .manifesto-img {
+    transform: scale(1.03);
+  }
+
+  .visual-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: linear-gradient(0deg, rgba(7, 9, 14, 0.95) 0%, transparent 100%);
+    text-align: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 992px) {
+    .manifesto-wrapper {
+      padding: 32px 24px;
+    }
+    .manifesto-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,301 @@
+---
+---
+
+<div class="audit-modal-backdrop" id="auditModal">
+  <div class="audit-modal-content glass-panel-gold">
+    <button class="modal-close-btn" id="closeAuditModal" aria-label="Cerrar modal">&times;</button>
+
+    <!-- Quiz Step 1 -->
+    <div class="quiz-step active" id="quizStep1">
+      <div class="quiz-progress">Paso 1 de 3</div>
+      <h3>¿Cuál es la situación actual de tu Marca Personal?</h3>
+      <p class="quiz-sub">Selecciona la opción que mejor describa tu etapa actual:</p>
+
+      <div class="quiz-options">
+        <button class="quiz-opt-btn" data-step="1" data-val="inicio">
+          <span class="opt-num">A</span>
+          <div>
+            <strong>Estoy empezando desde cero</strong>
+            <p>Tengo conocimiento o empresa pero no publico en redes.</p>
+          </div>
+        </button>
+        <button class="quiz-opt-btn" data-step="1" data-val="estancado">
+          <span class="opt-num">B</span>
+          <div>
+            <strong>Publico pero estoy estancado</strong>
+            <p>Tengo seguidores pero poco alcance y casi cero ventas.</p>
+          </div>
+        </button>
+        <button class="quiz-opt-btn" data-step="1" data-val="escalando">
+          <span class="opt-num">C</span>
+          <div>
+            <strong>Quiero escalar mi facturación</strong>
+            <p>Tengo comunidad pero necesito un embudo high-ticket automatizado.</p>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quiz Step 2 -->
+    <div class="quiz-step" id="quizStep2">
+      <div class="quiz-progress">Paso 2 de 3</div>
+      <h3>¿Cuál es tu principal cuello de botella?</h3>
+      <p class="quiz-sub">¿Qué te está impidiendo crecer en seguidores o ventas?</p>
+
+      <div class="quiz-options">
+        <button class="quiz-opt-btn" data-step="2" data-val="falta_tiempo">
+          <span class="opt-num">1</span>
+          <div>
+            <strong>Falta de tiempo y producción</strong>
+            <p>No tengo tiempo para guionar, grabar y editar video viral.</p>
+          </div>
+        </button>
+        <button class="quiz-opt-btn" data-step="2" data-val="estrategia_claridad">
+          <span class="opt-num">2</span>
+          <div>
+            <strong>Falta de estrategia clara</strong>
+            <p>No sé qué publicar para atraer compradores reales y no solo curiosos.</p>
+          </div>
+        </button>
+        <button class="quiz-opt-btn" data-step="2" data-val="sistema_ventas">
+          <span class="opt-num">3</span>
+          <div>
+            <strong>Falta de sistema de conversión</strong>
+            <p>Tengo visualizaciones pero la gente no agenda ni compra mis servicios.</p>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quiz Step 3 (Resultado & Contacto Directo) -->
+    <div class="quiz-step" id="quizStep3">
+      <div class="quiz-progress">Paso 3 de 3</div>
+      <div class="diagnosis-badge">Diagnóstico Preliminar Listo</div>
+      <h3 id="diagTitle">Evolución de Marca Personal & Growth High-Ticket</h3>
+      <p class="quiz-sub" id="diagDesc">Tu marca tiene un potencial alto de crecimiento rápido si implementas producción audiovisual constante y un embudo de agendamiento automatizado.</p>
+
+      <div class="diag-action-box">
+        <p>Déjanos tu contacto para enviarte el reporte en PDF completo y agendar la llamada con un especialista de Casanostra.</p>
+
+        <form id="modalAuditForm" class="modal-form">
+          <input type="text" id="modalName" required placeholder="Tu Nombre" class="form-input" />
+          <input type="tel" id="modalPhone" required placeholder="WhatsApp de contacto" class="form-input" />
+          <button type="submit" class="btn-primary" style="width: 100%;">Recibir Diagnóstico Completo</button>
+        </form>
+
+        <div id="modalSuccess" style="display: none; padding-top: 15px; color: #10B981; font-weight: 700;">
+          ✓ ¡Diagnóstico enviado! Te contactaremos vía WhatsApp.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .audit-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(4, 6, 10, 0.85);
+    backdrop-filter: blur(16px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .audit-modal-backdrop.active {
+    display: flex;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .audit-modal-content {
+    width: 100%;
+    max-width: 580px;
+    padding: 36px 30px;
+    position: relative;
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .quiz-step {
+    display: none;
+  }
+
+  .quiz-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .quiz-progress {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .quiz-step h3 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .quiz-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quiz-opt-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: left;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .quiz-opt-btn:hover {
+    border-color: var(--accent-gold);
+    background: rgba(226, 184, 89, 0.1);
+    transform: translateX(4px);
+  }
+
+  .opt-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(226, 184, 89, 0.15);
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .quiz-opt-btn strong {
+    font-size: 0.98rem;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .quiz-opt-btn p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .diagnosis-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(16, 185, 129, 0.2);
+    color: #10B981;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .diag-action-box {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 20px;
+    border: 1px solid rgba(226, 184, 89, 0.2);
+  }
+
+  .diag-action-box p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+</style>
+
+<script>
+  const auditModal = document.getElementById('auditModal');
+  const closeBtn = document.getElementById('closeAuditModal');
+  const openBtns = [document.getElementById('openAuditBtn'), document.getElementById('mobileAuditBtn')];
+
+  openBtns.forEach(btn => {
+    btn?.addEventListener('click', () => {
+      auditModal?.classList.add('active');
+    });
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    auditModal?.classList.remove('active');
+  });
+
+  // Quiz step navigation
+  const optBtns = document.querySelectorAll('.quiz-opt-btn');
+  optBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const step = target.dataset.step;
+
+      if (step === '1') {
+        document.getElementById('quizStep1')?.classList.remove('active');
+        document.getElementById('quizStep2')?.classList.add('active');
+      } else if (step === '2') {
+        document.getElementById('quizStep2')?.classList.remove('active');
+        document.getElementById('quizStep3')?.classList.add('active');
+      }
+    });
+  });
+
+  // Modal form submit
+  const modalForm = document.getElementById('modalAuditForm');
+  const modalSuccess = document.getElementById('modalSuccess');
+
+  modalForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    modalForm.style.display = 'none';
+    if (modalSuccess) modalSuccess.style.display = 'block';
+  });
+</script>

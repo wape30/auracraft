@@ -1,0 +1,107 @@
+---
+---
+
+<section class="stats-bar-section">
+  <div class="stats-container glass-panel">
+    <div class="stat-box">
+      <div class="stat-number text-gradient-gold">$5.8M+</div>
+      <div class="stat-label">Ventas Adicionales Generadas</div>
+      <div class="stat-sub">En marcas personales y clientes B2B</div>
+    </div>
+
+    <div class="stat-divider"></div>
+
+    <div class="stat-box">
+      <div class="stat-number text-gradient-cyan">2.4M+</div>
+      <div class="stat-label">Seguidores Reales Ganados</div>
+      <div class="stat-sub">Sin bots, audiencias calificadas</div>
+    </div>
+
+    <div class="stat-divider"></div>
+
+    <div class="stat-box">
+      <div class="stat-number text-gradient-purple">350%+</div>
+      <div class="stat-label">Aumento Promedio en Engagement</div>
+      <div class="stat-sub">Storytelling cinematográfico</div>
+    </div>
+
+    <div class="stat-divider"></div>
+
+    <div class="stat-box">
+      <div class="stat-number text-gradient-gold">98.4%</div>
+      <div class="stat-label">Retención de Clientes</div>
+      <div class="stat-sub">Relaciones de marca a largo plazo</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-bar-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .stats-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    padding: 32px 40px;
+    background: rgba(14, 18, 28, 0.75);
+    border: 1px solid rgba(226, 184, 89, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .stat-box {
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .stat-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 992px) {
+    .stats-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .stat-divider {
+      display: none;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .stats-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

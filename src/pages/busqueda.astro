@@ -1,0 +1,553 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Directorio y Búsqueda de Usuarios & Workers | Casanostra">
+  <div class="search-page">
+    <!-- Header Navbar -->
+    <header class="search-header glass-panel">
+      <div class="search-header-container">
+        <div class="search-brand">
+          <a href="/dashboard" class="brand-logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 17L12 22L22 17" stroke="#E2B859" stroke-width="2"/>
+              <path d="M2 12L12 17L22 12" stroke="#00F2FE" stroke-width="2"/>
+            </svg>
+          </a>
+          <div>
+            <div class="search-title">CASANOSTRA DIRECTORIO</div>
+            <div class="search-sub">Buscador de Perfiles & Talentos</div>
+          </div>
+        </div>
+
+        <div class="search-nav-actions">
+          <a href="/dashboard" class="btn-secondary btn-sm">⚡ Dashboard</a>
+          <a href="/opciones" class="btn-secondary btn-sm">⚙️ Opciones</a>
+          <a href="/" class="btn-secondary btn-sm">🌐 Sitio Web</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="search-main-container">
+      <!-- Search Bar & Filters Header Card -->
+      <div class="search-box-card glass-panel animate-on-scroll">
+        <div class="badge badge-cyan" style="margin-bottom: 12px;">🔍 Búsqueda de Perfiles</div>
+        <h2>Explora Clientes & Equipo Worker</h2>
+        <p>Busca marcas personales, clientes activos y especialistas de crecimiento de la agencia.</p>
+
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="inputSearchQuery" 
+            placeholder="Buscar por nombre, empresa, especialidad, ciudad, país o biografía..." 
+            class="search-input"
+          />
+        </div>
+
+        <div class="filter-pills-row">
+          <span class="filter-lbl">Filtrar por Rol:</span>
+          <button class="filter-pill active" data-role-filter="all" id="btnFilterAll">Todos los Perfiles</button>
+          <button class="filter-pill" data-role-filter="worker" id="btnFilterWorker">⚡ Workers / Staff</button>
+          <button class="filter-pill" data-role-filter="client" id="btnFilterClient">💼 Clientes / Marcas</button>
+        </div>
+      </div>
+
+      <!-- Results Count Status -->
+      <div class="results-bar">
+        <span class="results-count" id="resultsCountText">Cargando directorio...</span>
+      </div>
+
+      <!-- Profiles Grid -->
+      <div class="profiles-grid" id="profilesGrid">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .search-page {
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+
+  .search-header {
+    padding: 16px 0;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(226, 184, 89, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .search-header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(226, 184, 89, 0.15);
+    border: 1px solid rgba(226, 184, 89, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .search-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .search-nav-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  .search-main-container {
+    max-width: 1100px;
+    margin: 30px auto 0 auto;
+    padding: 0 24px;
+  }
+
+  .search-box-card {
+    padding: 32px;
+    border-radius: 24px;
+    margin-bottom: 24px;
+  }
+
+  .search-box-card h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  .search-box-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 14px 16px 14px 48px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .search-input:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+  }
+
+  .filter-pills-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filter-lbl {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .filter-pill {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-pill.active,
+  .filter-pill:hover {
+    background: rgba(226, 184, 89, 0.2);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+  }
+
+  .results-bar {
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Profiles Grid Layout */
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .profile-user-card {
+    padding: 24px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .profile-user-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-top-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .user-card-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-cyan));
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .user-card-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-card-avatar span {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #07090e;
+  }
+
+  .user-card-meta h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 2px;
+  }
+
+  .badge-role-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+
+  .badge-role-tag.worker {
+    background: rgba(226, 184, 89, 0.2);
+    color: var(--accent-gold);
+    border: 1px solid rgba(226, 184, 89, 0.4);
+  }
+
+  .badge-role-tag.client {
+    background: rgba(0, 242, 254, 0.2);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+  }
+
+  .card-company-niche {
+    font-size: 0.82rem;
+    color: var(--accent-cyan);
+    margin-bottom: 12px;
+  }
+
+  .card-bio-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .card-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 12px;
+  }
+
+  .mini-social-link {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .mini-social-link:hover {
+    background: rgba(226, 184, 89, 0.2);
+    color: var(--accent-gold);
+  }
+
+  @media (max-width: 768px) {
+    .profiles-grid {
+      grid-template-columns: 1fr;
+    }
+    .search-nav-actions {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { fetchAllProfiles, type UserProfile } from '../lib/firebase';
+
+  let allProfiles: UserProfile[] = [];
+  let currentRoleFilter = 'all';
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const resultsCountText = document.getElementById('resultsCountText');
+    const profilesGrid = document.getElementById('profilesGrid');
+
+    try {
+      allProfiles = await fetchAllProfiles();
+
+      // If no remote profiles found, populate clean sample directory demo profiles
+      if (allProfiles.length === 0) {
+        allProfiles = [
+          {
+            uid: 'sample-1',
+            email: 'carlos@casanostra.app',
+            displayName: 'Carlos Mendoza',
+            role: 'worker',
+            companyName: 'Casanostra Core Staff',
+            niche: 'Paid Ads & Growth Specialist',
+            city: 'Madrid',
+            country: 'España',
+            phone: '+34 611 223 344',
+            description: 'Especialista en adquisición de usuarios y escalado de campañas High-Ticket VSL en Meta Ads y TikTok Ads.',
+            photoURL: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80',
+            socials: { instagram: '@carlos.growth', linkedin: 'carlos-mendoza-growth', website: 'https://casanostra.app' },
+            createdAt: new Date().toISOString()
+          },
+          {
+            uid: 'sample-2',
+            email: 'elena@fitnessbrand.com',
+            displayName: 'Elena Rostova',
+            role: 'client',
+            companyName: 'Elena Rostova Fitness',
+            niche: 'Coaching Online & Marca Personal',
+            city: 'Barcelona',
+            country: 'España',
+            phone: '+34 655 443 221',
+            description: 'Creadora de contenido de bienestar y entrenadora personal. Escalando marca personal hacia 100k seguidores.',
+            photoURL: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80',
+            socials: { instagram: '@elena.rostova', youtube: '@elenarostovafit' },
+            createdAt: new Date().toISOString()
+          },
+          {
+            uid: 'sample-3',
+            email: 'mateo@videovirals.io',
+            displayName: 'Mateo Silva',
+            role: 'worker',
+            companyName: 'Casanostra Media Team',
+            niche: 'Edición & Storytelling Viral',
+            city: 'Medellín',
+            country: 'Colombia',
+            phone: '+57 300 123 4567',
+            description: 'Director creativo especializado en retención de Reels, Shorts de alto impacto y guiones virales.',
+            photoURL: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80',
+            socials: { instagram: '@mateosilva.editor', twitter: '@mateo_virals' },
+            createdAt: new Date().toISOString()
+          }
+        ];
+      }
+
+      renderProfiles();
+
+      // Search text filter listener
+      document.getElementById('inputSearchQuery')?.addEventListener('input', () => {
+        renderProfiles();
+      });
+
+      // Role filter pill listeners
+      document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.addEventListener('click', (e) => {
+          document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+          const btn = e.currentTarget as HTMLElement;
+          btn.classList.add('active');
+          currentRoleFilter = btn.dataset.roleFilter || 'all';
+          renderProfiles();
+        });
+      });
+
+    } catch (e) {
+      if (resultsCountText) resultsCountText.textContent = 'Error al cargar los perfiles del directorio.';
+    }
+  });
+
+  function renderProfiles() {
+    const query = ((document.getElementById('inputSearchQuery') as HTMLInputElement)?.value || '').toLowerCase().trim();
+    const grid = document.getElementById('profilesGrid');
+    const resultsCountText = document.getElementById('resultsCountText');
+    if (!grid) return;
+
+    const filtered = allProfiles.filter(p => {
+      // Role filter
+      if (currentRoleFilter !== 'all' && p.role !== currentRoleFilter) {
+        return false;
+      }
+
+      // Query filter
+      if (!query) return true;
+      const haystack = [
+        p.displayName,
+        p.companyName,
+        p.niche,
+        p.description,
+        p.city,
+        p.country,
+        p.email
+      ].filter(Boolean).join(' ').toLowerCase();
+
+      return haystack.includes(query);
+    });
+
+    if (resultsCountText) {
+      resultsCountText.textContent = `Mostrando ${filtered.length} de ${allProfiles.length} perfiles en el directorio`;
+    }
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:50px; color:var(--text-dim)">No se encontraron perfiles que coincidan con la búsqueda.</div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(p => {
+      const avatarSrc = p.photoURL || '';
+      const initials = (p.displayName || p.email || 'U')[0].toUpperCase();
+      const roleLabel = p.role === 'worker' ? '⚡ WORKER STAFF' : '💼 CLIENTE / MARCA';
+      const roleClass = p.role === 'worker' ? 'worker' : 'client';
+      const location = [p.city, p.country].filter(Boolean).join(', ');
+
+      const s = p.socials || {};
+      const socialBadges = [];
+      if (s.instagram) socialBadges.push(`<a href="${formatUrl(s.instagram, 'instagram.com/')}" target="_blank" class="mini-social-link">📸 Instagram</a>`);
+      if (s.linkedin) socialBadges.push(`<a href="${formatUrl(s.linkedin, 'linkedin.com/in/')}" target="_blank" class="mini-social-link">💼 LinkedIn</a>`);
+      if (s.twitter) socialBadges.push(`<a href="${formatUrl(s.twitter, 'x.com/')}" target="_blank" class="mini-social-link">🐦 Twitter</a>`);
+      if (s.youtube) socialBadges.push(`<a href="${formatUrl(s.youtube, 'youtube.com/')}" target="_blank" class="mini-social-link">▶️ YouTube</a>`);
+      if (s.website) socialBadges.push(`<a href="${formatUrl(s.website, '')}" target="_blank" class="mini-social-link">🌐 Website</a>`);
+
+      return `
+        <div class="profile-user-card glass-panel">
+          <div>
+            <div class="card-top-info">
+              <div class="user-card-avatar">
+                ${avatarSrc ? `<img src="${avatarSrc}" alt="${p.displayName}" />` : `<span>${initials}</span>`}
+              </div>
+              <div class="user-card-meta">
+                <h4>${p.displayName}</h4>
+                <span class="badge-role-tag ${roleClass}">${roleLabel}</span>
+              </div>
+            </div>
+
+            <div class="card-company-niche">
+              ${p.companyName || (p.role === 'worker' ? 'Casanostra Core' : 'Marca Personal')}
+              ${p.niche ? ` • ${p.niche}` : ''}
+            </div>
+
+            <p class="card-bio-text">
+              ${p.description || 'Sin biografía disponible aún en el perfil.'}
+            </p>
+
+            <div class="card-details-list">
+              ${location ? `<div>📍 ${location}</div>` : ''}
+              ${p.phone ? `<div>📞 ${p.phone}</div>` : ''}
+            </div>
+          </div>
+
+          <div class="card-social-links">
+            ${socialBadges.length > 0 ? socialBadges.join('') : '<span style="font-size:0.75rem; color:var(--text-dim)">Sin redes sociales</span>'}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function formatUrl(value: string, domainPrefix: string): string {
+    if (!value) return '';
+    let val = value.trim();
+    if (val.startsWith('http://') || val.startsWith('https://')) return val;
+    if (val.startsWith('@')) val = val.substring(1);
+    if (domainPrefix && !val.includes(domainPrefix)) {
+      return `https://${domainPrefix}${val}`;
+    }
+    return `https://${val}`;
+  }
+</script>

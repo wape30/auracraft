@@ -1,0 +1,316 @@
+---
+---
+
+<section class="hero-section">
+  <!-- Glowing Background Orbs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="badge badge-gold animate-fade-in">
+        <span class="badge-pulse"></span>
+        Evolución de Marca Personal & Growth Marketing
+      </div>
+
+      <h1 class="hero-title animate-fade-in delay-1">
+        Construimos <span class="text-gradient-gold">Marcas Personales</span> Dominantes que Escalan tus Ventas.
+      </h1>
+
+      <p class="hero-description animate-fade-in delay-2">
+        En <strong>Casanostra Marketing Agency</strong> combinamos storytelling de nivel Hollywood, producción audiovisual de alta gama y funnels de conversión para convertir tu conocimiento en un activo digital de autoridad duradera y crecimiento exponencial en seguidores reales.
+      </p>
+
+      <div class="hero-actions animate-fade-in delay-3">
+        <a href="#contacto" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+          Agendar Sesión Estratégica
+        </a>
+        <a href="#calculadora" class="btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          </svg>
+          Calcular Mi Crecimiento
+        </a>
+      </div>
+
+      <div class="hero-trust animate-fade-in delay-4">
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>Seguidores 100% Reales & Orgánicos</span>
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E2B859" stroke-width="2.5">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>+$5.2M Generados en Ventas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Image Showcase -->
+    <div class="hero-visual animate-fade-in delay-2">
+      <div class="hero-image-card glass-panel">
+        <img 
+          src="/images/hero_casanostra.jpg" 
+          alt="Casanostra Marketing Agency Dashboard" 
+          class="hero-img"
+          loading="eager"
+        />
+
+        <!-- Floating Glass Overlay Cards -->
+        <div class="floating-card float-1 glass-panel">
+          <div class="float-icon gold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="float-val">+340%</div>
+            <div class="float-lbl">Crecimiento en Ventas</div>
+          </div>
+        </div>
+
+        <div class="floating-card float-2 glass-panel">
+          <div class="float-icon cyan">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="float-val">100% Reales</div>
+            <div class="float-lbl">Comunidad & Lead Qual.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding-top: 160px;
+    padding-bottom: 90px;
+    overflow: hidden;
+  }
+
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .orb-1 {
+    top: 10%;
+    left: -5%;
+    width: 450px;
+    height: 450px;
+    background: rgba(226, 184, 89, 0.15);
+  }
+
+  .orb-2 {
+    top: 20%;
+    right: -10%;
+    width: 550px;
+    height: 550px;
+    background: rgba(0, 242, 254, 0.12);
+  }
+
+  .hero-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge-pulse {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-gold);
+    animation: pulse-glow 2s infinite;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 620px;
+  }
+
+  .hero-description strong {
+    color: #ffffff;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-image-card {
+    position: relative;
+    padding: 12px;
+    border-radius: 24px;
+    background: rgba(18, 22, 34, 0.7);
+    border: 1px solid rgba(226, 184, 89, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(226, 184, 89, 0.15);
+    overflow: visible;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    max-height: 480px;
+    border-radius: 16px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border-radius: 16px;
+    background: rgba(11, 14, 20, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .float-1 {
+    top: -20px;
+    left: -30px;
+    animation: floatAnim 6s ease-in-out infinite;
+  }
+
+  .float-2 {
+    bottom: -25px;
+    right: -20px;
+    animation: floatAnim 6s ease-in-out infinite 3s;
+  }
+
+  @keyframes floatAnim {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .float-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .float-icon.gold {
+    background: rgba(226, 184, 89, 0.15);
+    color: var(--accent-gold);
+    border: 1px solid rgba(226, 184, 89, 0.3);
+  }
+
+  .float-icon.cyan {
+    background: rgba(0, 242, 254, 0.15);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+  }
+
+  .float-val {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+  }
+
+  .float-lbl {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+
+  @media (max-width: 992px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 40px;
+    }
+
+    .hero-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .hero-trust {
+      justify-content: center;
+    }
+
+    .float-1 {
+      left: 0;
+      top: -15px;
+    }
+    .float-2 {
+      right: 0;
+      bottom: -15px;
+    }
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Casanostra Marketing Agency | Evoluciona tu Marca Personal y Multiplica tus Ventas",
+	description = "Agencia boutique especializada en creación y evolución de marca personal, crecimiento en seguidores reales y conversión de audiencia en clientes de alto valor."
+} = Astro.props;
+---
+
+<!usr/bin/env html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+
+		<script is:inline>
+			(function() {
+				const savedTheme = localStorage.getItem('casanostra_theme') || 'dark';
+				document.documentElement.setAttribute('data-theme', savedTheme);
+			})();
+		</script>
+
+		<!-- Primary SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content="marca personal, agencia de marketing, crecimiento seguidores reales, escalar ventas, branding personal, marketing digital, casanostra, funnels high ticket, viral video" />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Open Graph / Facebook / LinkedIn -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/images/hero_casanostra.jpg" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/images/hero_casanostra.jpg" />
+	</head>
+	<body>
+		<slot />
+
+		<!-- Smooth Scroll and Interactive Scripts -->
+		<script>
+			// Intersection Observer for scroll animations
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: "0px 0px -50px 0px"
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+					}
+				});
+			}, observerOptions);
+
+			document.addEventListener('DOMContentLoaded', () => {
+				document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+			});
+		</script>
+	</body>
+</html>
